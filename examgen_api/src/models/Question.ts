@@ -1,7 +1,7 @@
 import mongoose, {Schema} from "mongoose";
 import {IQuestion} from "../interfaces/IQuestion";
 
-const QuestionSchema: Schema = new Schema({
+const QuestionSchema: Schema<IQuestion> = new Schema<IQuestion>({
     category: {
         type: String,
         required: true
@@ -20,6 +20,7 @@ const QuestionSchema: Schema = new Schema({
     },
     answers: [
         {
+            _id: false,
             text: String,
             isCorrect: Boolean
         }

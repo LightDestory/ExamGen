@@ -5,6 +5,7 @@ export class Sender {
     static ERROR_TYPE_UNAUTH = 1;
     static ERROR_TYPE_PARAMETER = 2
     static ERROR_TYPE_NOT_FOUND = 3
+    static ERROR_TYPE_NOT_ENOUGH = 4
     private static instance: Sender | undefined;
 
     private constructor() {}
@@ -27,6 +28,10 @@ export class Sender {
             case Sender.ERROR_TYPE_NOT_FOUND:
                 status = 404;
                 error.result = "Unknown resource"
+                break;
+            case Sender.ERROR_TYPE_NOT_ENOUGH:
+                status = 404;
+                error.result = "Your creation set is not possible with the current question database!"
                 break;
             default /*ERROR_TYPE_PARAMETER*/:
                 status = 400;

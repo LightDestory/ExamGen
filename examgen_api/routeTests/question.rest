@@ -1,22 +1,22 @@
 ### Question All List ###
-GET localhost:5000/question
+GET localhost:5000/api/question
 Authorization: capybara
 ### Question Content List ###
-GET localhost:5000/question/60e5f9118f43e81c2cafe142
+GET localhost:5000/api/question/60ef1b783aa5df0e6cefa31f
 Authorization: capybara
 ### Question Creation ###
-POST localhost:5000/question/
+POST localhost:5000/api/question/
 Authorization: capybara
 Content-Type: application/json
 
 {
-  "category": "Animals",
-  "title": "Is Capybara beautiful?",
+  "category": "Goodness",
+  "title": "Is Cat beautiful?",
   "optionalSubContent": "",
   "answerTypology": "text"
 }
 ### Question Edit ###
-PUT localhost:5000/question/60e5f9118f43e81c2cafe142
+PUT localhost:5000/api/question/60ef1b783aa5df0e6cefa31f
 Authorization: capybara
 Content-Type: application/json
 
@@ -44,7 +44,11 @@ Content-Type: application/json
     }
   ]
 }
-### Category Delete ###
-DELETE localhost:5000/question/60e5f7c76cab53085003e898
+### Question Delete ###
+DELETE localhost:5000/api/question/60ef1b783aa5df0e6cefa31f
+Authorization: capybara
+###
+### All Question Delete ###
+DELETE localhost:5000/api/question/all
 Authorization: capybara
 ###

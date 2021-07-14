@@ -4,6 +4,8 @@ import db from "./db/database"
 import {authCheck} from "./middlewares/authMiddleware";
 import {categoryRoute} from "./routes/categoryRoute";
 import {questionRoute} from "./routes/questionRoute";
+import {pingRoute} from "./routes/pingRoute";
+import {examRoute} from "./routes/examRoute";
 
 const configuration = require('dotenv').config();
 const app: Application = express();
@@ -23,8 +25,10 @@ function bootstrap() {
             console.log(`Connection with database established!`);
             app.use(express.json(), express.text(), bodyParser.urlencoded({extended: false}));
             app.use(authCheck);
-            app.use('/category', categoryRoute);
-            app.use('/question', questionRoute);
+            app.use('/api/ping', pingRoute);
+            app.use('/api/category', categoryRoute);
+            app.use('/api/question', questionRoute);
+            app.use('/api/exam', examRoute)
             app.listen(port, () => {
                 console.log(`Listening to ${port}!`);
             });

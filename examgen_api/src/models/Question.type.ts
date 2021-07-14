@@ -1,13 +1,13 @@
 interface AnswerType {
-    text: String,
-    isCorrect: Boolean
+    text: string,
+    isCorrect: boolean
 }
 
 interface QuestionType {
-    category: String,
-    title: String,
-    optionalSubContent: String | undefined,
-    answerTypology: String
+    category: string,
+    title: string,
+    optionalSubContent: string | undefined,
+    answerTypology: string
     answers: AnswerType[] | undefined
 }
 

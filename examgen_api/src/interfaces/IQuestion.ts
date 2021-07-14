@@ -1,11 +1,9 @@
-import {Document} from "mongoose";
-
-interface IAnswer extends Document {
+interface IAnswer {
     text: String,
     isCorrect: Boolean
 }
 
-interface IQuestion extends Document {
+interface IQuestion {
     category: String,
     title: String,
     optionalSubContent: String,

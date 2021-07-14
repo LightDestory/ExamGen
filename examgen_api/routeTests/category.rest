@@ -1,18 +1,18 @@
 ### Category All List ###
-GET localhost:5000/category
+GET localhost:5000/api/category
 Authorization: capybara
 ### Category Content List ###
-GET localhost:5000/category/:catName
+GET localhost:5000/api/category/Goodness
 Authorization: capybara
 ### Category Update Name ###
-PUT localhost:5000/category/:catName
+PUT localhost:5000/api/category/Animals
 Authorization: capybara
 Content-Type: application/json
 
 {
-  "name": "BestAnimals"
+  "name": "Gods"
 }
 ### Category Delete ###
-DELETE localhost:5000/category/:catName
+DELETE localhost:5000/api/category/:catName
 Authorization: capybara
 ###
