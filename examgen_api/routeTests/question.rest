@@ -10,13 +10,13 @@ Authorization: capybara
 Content-Type: application/json
 
 {
-  "category": "Goodness",
-  "title": "Is Cat beautiful?",
-  "optionalSubContent": "",
+  "category": "Animals",
+  "title": "Is Sarda beautiful?",
+  "optionalSubContent": "Forse no, forse si",
   "answerTypology": "text"
 }
 ### Question Edit ###
-PUT localhost:5000/api/question/60ef1b783aa5df0e6cefa31f
+PUT localhost:5000/api/question/60ef4a4da997090dc02467d7
 Authorization: capybara
 Content-Type: application/json
 

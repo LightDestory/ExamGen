@@ -4,6 +4,7 @@ import {Sender} from "../utils/Sender";
 import ExamType from "../models/Exam.type";
 import {EnforceDocument} from "mongoose";
 import IExam from "../interfaces/IExam";
+import PDFgen from "../utils/PDFgen";
 
 export const examRoute: Router = express.Router();
 
@@ -45,7 +46,20 @@ examRoute.post('/generate', (req: Request, res: Response) => {
     })
     generateExam(e)
         .then((result) => {
-            Sender.getInstance().sendResult(res, 201, result);
+            const pdg = new PDFgen();
+            pdg.generateStream(result)
+                .then((stream) => {
+                    res
+                        .writeHead(200, {
+                            'Content-Length': Buffer.byteLength(stream),
+                            'Content-Type': 'application/pdf',
+                            'Content-disposition': 'attachment;filename=exam.pdf',
+                        })
+                        .end(stream);
+                })
+                .catch(() => {
+                    Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PDF_GEN);
+                })
         })
         .catch(() => {
             Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_ENOUGH);

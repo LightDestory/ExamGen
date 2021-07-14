@@ -6,6 +6,7 @@ export class Sender {
     static ERROR_TYPE_PARAMETER = 2
     static ERROR_TYPE_NOT_FOUND = 3
     static ERROR_TYPE_NOT_ENOUGH = 4
+    static ERROR_TYPE_PDF_GEN = 5
     private static instance: Sender | undefined;
 
     private constructor() {}
@@ -32,6 +33,10 @@ export class Sender {
             case Sender.ERROR_TYPE_NOT_ENOUGH:
                 status = 404;
                 error.result = "Your creation set is not possible with the current question database!"
+                break;
+            case Sender.ERROR_TYPE_PDF_GEN:
+                status = 500;
+                error.result = "Unable to process the pdf generation, server issue!"
                 break;
             default /*ERROR_TYPE_PARAMETER*/:
                 status = 400;
