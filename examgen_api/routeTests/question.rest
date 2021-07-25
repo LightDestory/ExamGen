@@ -11,10 +11,24 @@ Content-Type: application/json
 
 {
   "subject": "BackEnd",
-  "category": "PHP",
+  "category": "JS",
   "title": "Is TypeScript beautiful?",
   "optionalSubContent": "Be careful, there are more correct choices!",
-  "answerTypology": "text"
+  "answerTypology": "multi",
+  "answers": [
+    {
+      "text": "q1"
+    },
+    {
+      "text": "q2"
+    },
+    {
+      "text": "q3"
+    },
+    {
+      "text": "q4"
+    }
+  ]
 }
 ### Question Edit ###
 PUT localhost:5000/api/question/60fd86cdf500e81bfced1e5e

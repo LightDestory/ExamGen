@@ -1,6 +1,6 @@
 import {EnforceDocument, Schema, set} from "mongoose";
 import {ExamRequest, IExam, model as Exams} from "../models/Exam";
-import {model as Questions} from "../models/Question"
+import {IQuestion, model as Questions} from "../models/Question"
 
 function getAllPastExams(): Promise<EnforceDocument<IExam, {}>[]> {
     return Exams.find({}, '_id subject title date')
@@ -20,13 +20,14 @@ async function generateExam(data: ExamRequest): Promise<IExam> {
     }
     let questions = await generateQuestions(data);
     let today: String = new Date().toISOString().slice(0, 10)
-    return await new Exams({
+    let tmp = await new Exams({
         subject: data.subject,
         date: today,
         title: data.title,
-        questions: questions
+        questions: []
     })
-        .save()
+    tmp.questions.push(...questions)
+    return tmp.save()
 }
 
 function deleteExam(id: String): Promise<IExam | null> {
@@ -43,8 +44,8 @@ async function checkCollectionDataset(data: ExamRequest): Promise<Boolean> {
     let sets = data.questions;
     for (let i = 0; i < sets.length; i++) {
         let cat: String = sets[i].category;
-        let overallQta: Number = parseInt(<string>sets[i].overallQta);
-        let multiQta: Number = parseInt(<string>sets[i].multiQta);
+        let overallQta: number = parseInt(<string>sets[i].overallQta);
+        let multiQta: number = parseInt(<string>sets[i].multiQta);
         if(multiQta == -1){
             let overall = await Questions.countDocuments({"subject": data.subject, "category": cat});
             if(overallQta > overall){
@@ -52,6 +53,7 @@ async function checkCollectionDataset(data: ExamRequest): Promise<Boolean> {
             }
         } else {
             let overallText = await Questions.countDocuments({"subject": data.subject, "category": cat, "answerTypology":"text"});
+            overallQta-=multiQta;
             let multi = await Questions.countDocuments({"subject": data.subject, "category": cat, "answerTypology":"multi"});
             if (overallQta > overallText || multiQta > multi) {
                 return false;
@@ -76,14 +78,9 @@ async function generateQuestions(data: ExamRequest): Promise<any[]> {
                     "subject": data.subject,
                     "category": cat
                 }
-            }, {$sample: {size: overallQta}}, {
-                $project: {
-                    _id: 0,
-                    "question": "$_id"
-                }
-            }]);
+            }, {$sample: {size: overallQta}}, {$project: {__v: 0}}]);
         } else {
-            overallQta = overallQta - multiQta;
+            overallQta-= multiQta;
             if(overallQta > 0) {
                 fetch = await Questions.aggregate([{
                     $match: {
@@ -91,12 +88,7 @@ async function generateQuestions(data: ExamRequest): Promise<any[]> {
                         "category": cat,
                         "answerTypology": "text"
                     }
-                }, {$sample: {size: overallQta}}, {
-                    $project: {
-                        _id: 0,
-                        "question": "$_id"
-                    }
-                }]);
+                }, {$sample: {size: overallQta}}, {$project: {__v: 0}}]);
             }
             if(multiQta > 0) {
                 multiFetch = await Questions.aggregate([{
@@ -105,12 +97,7 @@ async function generateQuestions(data: ExamRequest): Promise<any[]> {
                         "category": cat,
                         "answerTypology": "multi"
                     }
-                }, {$sample: {size: multiQta}}, {
-                    $project: {
-                        _id: 0,
-                        "question": "$_id"
-                    }
-                }]);
+                }, {$sample: {size: multiQta}}, {$project: {__v: 0}}]);
             }
         }
         questions.push(...fetch)

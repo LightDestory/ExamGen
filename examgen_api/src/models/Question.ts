@@ -43,4 +43,4 @@ const QuestionSchema: Schema<IQuestion> = new Schema<IQuestion>({
 
 const model: Model<IQuestion> = mongoose.model<IQuestion>("Question", QuestionSchema);
 
-export {IQuestion, model}
+export {QuestionSchema, IQuestion, model}

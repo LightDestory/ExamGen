@@ -7,7 +7,7 @@ export default class PDFgen {
 
     private yOffset: number = 50;
     private examPDF: PDFKit.PDFDocument;
-    readonly LEFT_MARGIN: number = 40;
+    readonly LEFT_MARGIN: number = 50;
     readonly Y_LIMIT: number = 785;
     readonly OPEN_LINES: number = 4;
 
@@ -16,8 +16,8 @@ export default class PDFgen {
     }
 
     private insertHeader(data: IExam): void {
-        this.examPDF.fontSize(18).text(`Esame di ${data.subject}: ${data.title}`,0, this.yOffset, {align: "center"});
-        this.examPDF.fontSize(14).text(`Data: ${data.date.toDateString()}`, 0, this.yOffset, {
+        this.examPDF.fontSize(18).text(`Esame di ${data.subject}: ${data.title}`,this.LEFT_MARGIN, this.yOffset, {align: "left"});
+        this.examPDF.fontSize(14).text(`Data: ${data.date.toISOString().slice(0, 10)}`, 0, this.yOffset, {
             align: "right"
         });
         this.examPDF.moveDown();
@@ -32,7 +32,7 @@ export default class PDFgen {
     }
 
     private insertQuestion(n: number, question: IQuestion): void {
-        if(this.yOffset+195 < this.Y_LIMIT){
+        if(this.yOffset+135 < this.Y_LIMIT){
             this.examPDF.moveDown();
             this.yOffset+=40;
         } else {
@@ -43,7 +43,7 @@ export default class PDFgen {
         let nq_len: number = this.examPDF.widthOfString(nq, {align: "left"})
         this.examPDF.text(nq, this.LEFT_MARGIN, this.yOffset, {align: "left"});
         this.examPDF.text(`${question.title}`, this.LEFT_MARGIN+5+nq_len, this.yOffset, {align: "left"});
-        if(question.optionalSubContent != "") {
+        if(typeof question.optionalSubContent !== "undefined") {
             this.examPDF.moveDown();
             this.yOffset+=20;
             this.examPDF.text(`${question.optionalSubContent}`, this.LEFT_MARGIN+5+nq_len, this.yOffset, {align: "left"});
@@ -58,11 +58,11 @@ export default class PDFgen {
 
     private insertMultipleAns(question: IQuestion) {
         for(let i = 0; i< question.answers!.length; i++){
-            this.yOffset+=25;
-            let ans: String = question.answers![i];
+            this.yOffset+=20;
+            let ans: any = question.answers![i];
             this.examPDF.rect(this.LEFT_MARGIN, this.yOffset, 10, 10)
                 .stroke()
-            this.examPDF.text(<string>ans, this.LEFT_MARGIN+20, this.yOffset)
+            this.examPDF.text(<string>ans.text, this.LEFT_MARGIN+20, this.yOffset)
             this.examPDF.moveDown();
         }
     }
@@ -70,7 +70,7 @@ export default class PDFgen {
     private insertOpenQuestionSpace(){
         this.yOffset+=20;
         for(let i = 0; i< this.OPEN_LINES; i++){
-            this.yOffset+=25;
+            this.yOffset+=20;
             this.examPDF.moveTo(this.LEFT_MARGIN, this.yOffset)
                 .lineTo(540,this.yOffset)
                 .stroke();

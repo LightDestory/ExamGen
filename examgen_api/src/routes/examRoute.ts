@@ -54,7 +54,7 @@ examRoute.post('/generate', async (req: Request, res: Response) => {
     });
     generateExam(e)
         .then((result) => {
-            /*const pdg = new PDFgen();
+            const pdg = new PDFgen();
             pdg.generateStream(result)
                 .then((stream) => {
                     res
@@ -68,8 +68,6 @@ examRoute.post('/generate', async (req: Request, res: Response) => {
                 .catch(() => {
                     Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PDF_GEN);
                 })
-             */
-            Sender.getInstance().sendResult(res, 200, result);
         })
         .catch(() => {
             Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_ENOUGH);

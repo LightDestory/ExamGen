@@ -1,5 +1,5 @@
 import mongoose, {Model, Schema} from "mongoose";
-import {IQuestion} from "./Question";
+import {IQuestion, QuestionSchema} from "./Question";
 
 interface IExam {
     subject: String,
@@ -33,7 +33,7 @@ const ExamSchema: Schema<IExam> = new Schema<IExam>({
         type: String,
         required: true
     },
-    questions: [{_id: false, question: {type: Schema.Types.ObjectId, ref: 'Question'}}]
+    questions: [QuestionSchema]
 
 });
 const model: Model<IExam> = mongoose.model<IExam>("Exam", ExamSchema);
