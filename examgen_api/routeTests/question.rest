@@ -2,7 +2,7 @@
 GET localhost:5000/api/question
 Authorization: capybara
 ### Question Content List ###
-GET localhost:5000/api/question/60ef1b783aa5df0e6cefa31f
+GET localhost:5000/api/question/60fd8278b6d2cc0850b44985
 Authorization: capybara
 ### Question Creation ###
 POST localhost:5000/api/question/
@@ -10,42 +10,40 @@ Authorization: capybara
 Content-Type: application/json
 
 {
-  "category": "Animals",
-  "title": "Is Sarda beautiful?",
-  "optionalSubContent": "Forse no, forse si",
+  "subject": "BackEnd",
+  "category": "PHP",
+  "title": "Is TypeScript beautiful?",
+  "optionalSubContent": "Be careful, there are more correct choices!",
   "answerTypology": "text"
 }
 ### Question Edit ###
-PUT localhost:5000/api/question/60ef4a4da997090dc02467d7
+PUT localhost:5000/api/question/60fd86cdf500e81bfced1e5e
 Authorization: capybara
 Content-Type: application/json
 
 {
+  "subject": "BackEnd2",
   "category": "Animals",
   "title": "Is Capybara beautiful?",
   "optionalSubContent": "Be careful, there are more correct choices!",
   "answerTypology": "multi",
   "answers": [
     {
-      "text": "Yes",
-      "isCorrect": true
+      "text": "Yes"
     },
     {
-      "text": "Yes, of course",
-      "isCorrect": true
+      "text": "Yes, of course"
     },
     {
-      "text": "Yes, it's a divine animal",
-      "isCorrect": true
+      "text": "Yes, it's a divine animal"
     },
     {
-      "text": "Yes, yes my owner~",
-      "isCorrect": true
+      "text": "Yes, yes my owner~"
     }
   ]
 }
 ### Question Delete ###
-DELETE localhost:5000/api/question/60ef1b783aa5df0e6cefa31f
+DELETE localhost:5000/api/question/60fd8758f500e81bfced1e63
 Authorization: capybara
 ###
 ### All Question Delete ###

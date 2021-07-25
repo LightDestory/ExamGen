@@ -1,6 +1,6 @@
-import IExam from "../interfaces/IExam";
 import getStream from "get-stream";
-import {IAnswer, IQuestion} from "../interfaces/IQuestion";
+import {IExam} from "../models/Exam";
+import {IQuestion} from "../models/Question";
 const PDFDocument = require('pdfkit')
 
 export default class PDFgen {
@@ -16,8 +16,8 @@ export default class PDFgen {
     }
 
     private insertHeader(data: IExam): void {
-        this.examPDF.fontSize(18).text(`Exam: ${data.title}`,0, this.yOffset, {align: "center"});
-        this.examPDF.fontSize(14).text(`Date: ${data.date.toDateString()}`, 0, this.yOffset, {
+        this.examPDF.fontSize(18).text(`Esame di ${data.subject}: ${data.title}`,0, this.yOffset, {align: "center"});
+        this.examPDF.fontSize(14).text(`Data: ${data.date.toDateString()}`, 0, this.yOffset, {
             align: "right"
         });
         this.examPDF.moveDown();
@@ -57,12 +57,12 @@ export default class PDFgen {
     }
 
     private insertMultipleAns(question: IQuestion) {
-        for(let i = 0; i< question.answers.length; i++){
+        for(let i = 0; i< question.answers!.length; i++){
             this.yOffset+=25;
-            let ans: IAnswer = question.answers[i];
+            let ans: String = question.answers![i];
             this.examPDF.rect(this.LEFT_MARGIN, this.yOffset, 10, 10)
                 .stroke()
-            this.examPDF.text(<string>ans.text, this.LEFT_MARGIN+20, this.yOffset)
+            this.examPDF.text(<string>ans, this.LEFT_MARGIN+20, this.yOffset)
             this.examPDF.moveDown();
         }
     }
@@ -79,7 +79,7 @@ export default class PDFgen {
     }
 
     private insertMetadata(data: IExam) {
-        this.examPDF.info.Title = `Exam: ${data.title}`;
+        this.examPDF.info.Title = `Exam: ${data.subject}-${data.title}`;
         this.examPDF.info.CreationDate = data.date
     }
 
@@ -88,7 +88,7 @@ export default class PDFgen {
         this.insertHeader(data);
         this.examPDF.fontSize(14);
         for( let i = 0; i<data.questions.length; i++){
-            this.insertQuestion(i, data.questions[i].question)
+            this.insertQuestion(i, data.questions[i])
         }
         this.examPDF.end();
         return getStream.buffer(this.examPDF)

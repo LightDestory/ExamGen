@@ -1,28 +1,21 @@
 import express, {Request, Response, Router} from 'express';
-import {getAllCategories, getCategoryContents, updateCategory, deleteCategory} from "../controllers/categoryController";
 import {Sender} from "../utils/Sender";
 import {EnforceDocument, UpdateWriteOpResult} from "mongoose";
 import {IQuestion} from "../models/Question";
+import {deleteSubject, getAllSubjects, getSubjectContents, updateSubject} from "../controllers/subjectController";
 
-export const categoryRoute: Router = express.Router({mergeParams: true});
+export const subjectRoute: Router = express.Router();
 
-categoryRoute.get('/', (req: Request, res: Response) => {
-    let subject: String = req.params.subjectName;
-    getAllCategories(subject)
+subjectRoute.get('/', (req: Request, res: Response) => {
+    getAllSubjects()
         .then((results: String[]) => {
-            if(results.length > 0) {
-                Sender.getInstance().sendResult(res, 200, results);
-            }
-            else {
-                Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_FOUND);
-            }
+            Sender.getInstance().sendResult(res, 200, results);
         });
 });
 
-categoryRoute.get('/:categoryName', (req: Request, res: Response) => {
-    let category: String = req.params.categoryName;
+subjectRoute.get('/:subjectName', (req: Request, res: Response) => {
     let subject: String = req.params.subjectName;
-    getCategoryContents(subject, category)
+    getSubjectContents(subject)
         .then((results: EnforceDocument<IQuestion, {}>[] )=> {
             if(results.length == 0){
                 Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_FOUND);
@@ -32,15 +25,14 @@ categoryRoute.get('/:categoryName', (req: Request, res: Response) => {
         });
 });
 
-categoryRoute.put("/:categoryName", (req: Request, res: Response) => {
-    let subject: String = req.params.subjectName;
-    let currCategory: String = req.params.categoryName;
+subjectRoute.put("/:subjectName", (req: Request, res: Response) => {
+    let currSubject: String = req.params.subjectName;
     let newName: String | undefined = req.body.name;
     if(!newName){
         Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PARAMETER);
         return;
     }
-    updateCategory(subject, currCategory, newName!)
+    updateSubject(currSubject, newName!)
         .then((results: UpdateWriteOpResult) => {
             if(results.nModified == 0){
                 Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_FOUND);
@@ -50,10 +42,9 @@ categoryRoute.put("/:categoryName", (req: Request, res: Response) => {
         });
 });
 
-categoryRoute.delete("/:categoryName", (req: Request, res: Response) => {
+subjectRoute.delete("/:subjectName", (req: Request, res: Response) => {
     let subject: String = req.params.subjectName;
-    let category: String = req.params.categoryName;
-    deleteCategory(subject, category)
+    deleteSubject(subject)
         .then(results => {
             if(results.deletedCount == 0){
                 Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_FOUND);

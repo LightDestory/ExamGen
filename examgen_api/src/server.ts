@@ -2,10 +2,7 @@ import express, {Application} from 'express';
 import bodyParser from "body-parser";
 import db from "./db/database"
 import {authCheck} from "./middlewares/authMiddleware";
-import {categoryRoute} from "./routes/categoryRoute";
-import {questionRoute} from "./routes/questionRoute";
-import {pingRoute} from "./routes/pingRoute";
-import {examRoute} from "./routes/examRoute";
+import {registerRoutes} from "./routes/routeManager";
 
 const configuration = require('dotenv').config();
 const app: Application = express();
@@ -13,7 +10,7 @@ const app: Application = express();
 
 function bootstrap() {
     if (configuration.error) {
-        console.error(`Unable to load environment settings. Error: \r\n${configuration.error}`);
+        console.error(`Unable to load environment settings.\r\n${configuration.error}`);
         process.exit();
     }
     console.log("Loaded configuration!");
@@ -25,10 +22,7 @@ function bootstrap() {
             console.log(`Connection with database established!`);
             app.use(express.json(), express.text(), bodyParser.urlencoded({extended: false}));
             app.use(authCheck);
-            app.use('/api/ping', pingRoute);
-            app.use('/api/category', categoryRoute);
-            app.use('/api/question', questionRoute);
-            app.use('/api/exam', examRoute)
+            registerRoutes(app);
             app.listen(port, () => {
                 console.log(`Listening to ${port}!`);
             });

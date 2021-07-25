@@ -1,7 +1,19 @@
-import mongoose, {Schema} from "mongoose";
-import {IQuestion} from "../interfaces/IQuestion";
+import mongoose, {Model, Schema} from "mongoose";
+
+interface IQuestion {
+    subject?: String,
+    category: String,
+    title: String,
+    optionalSubContent?: String,
+    answerTypology: String
+    answers?: String[]
+}
 
 const QuestionSchema: Schema<IQuestion> = new Schema<IQuestion>({
+    subject: {
+        type: String,
+        required: true
+    },
     category: {
         type: String,
         required: true
@@ -21,9 +33,14 @@ const QuestionSchema: Schema<IQuestion> = new Schema<IQuestion>({
     answers: [
         {
             _id: false,
-            text: String,
-            isCorrect: Boolean
+            text: {
+                type: String,
+                required: true
+            }
         }
     ]
 });
-export default mongoose.model<IQuestion>("Question", QuestionSchema);
+
+const model: Model<IQuestion> = mongoose.model<IQuestion>("Question", QuestionSchema);
+
+export {IQuestion, model}

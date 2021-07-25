@@ -1,18 +1,18 @@
 ### Category All List ###
-GET localhost:5000/api/category
+GET localhost:5000/api/subject/BackDev/category
 Authorization: capybara
 ### Category Content List ###
-GET localhost:5000/api/category/Goodness
+GET localhost:5000/api/subject/BackDev/category/PHP
 Authorization: capybara
 ### Category Update Name ###
-PUT localhost:5000/api/category/Animals
+PUT localhost:5000/api/subject/BackDev/category/PHP
 Authorization: capybara
 Content-Type: application/json
 
 {
-  "name": "Gods"
+  "name": "JS"
 }
 ### Category Delete ###
-DELETE localhost:5000/api/category/:catName
+DELETE localhost:5000/api/subject/BackDev/category/JS
 Authorization: capybara
 ###

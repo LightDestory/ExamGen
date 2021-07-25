@@ -7,9 +7,8 @@ import {
     updateQuestion
 } from "../controllers/questionController";
 import {Sender} from "../utils/Sender";
-import {QuestionType} from "../models/Question.type";
 import {EnforceDocument} from "mongoose";
-import {IQuestion} from "../interfaces/IQuestion";
+import {IQuestion} from "../models/Question";
 
 export const questionRoute: Router = express.Router();
 
@@ -37,13 +36,13 @@ questionRoute.get('/:id', (req: Request, res: Response) => {
 });
 
 questionRoute.post('/', (req: Request, res: Response) => {
-    let {category, title, optionalSubContent, answerTypology, answers} = req.body;
-    if((!category || !title || !answerTypology)
-    || answerTypology == "multi" && !answers ){
+    let {subject, category, title, optionalSubContent, answerTypology, answers} = req.body;
+    if((!subject || !category || !title || !answerTypology)
+    || answerTypology == "multi" && (!answers || answers.length <= 1) ){
         Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PARAMETER)
         return
     }
-    let q: QuestionType = {category, title, optionalSubContent, answerTypology, answers}
+    let q: IQuestion = {subject, category, title, optionalSubContent, answerTypology, answers}
     createQuestion(q)
         .then((result: IQuestion) => {
             Sender.getInstance().sendResult(res, 201, result);
@@ -51,14 +50,14 @@ questionRoute.post('/', (req: Request, res: Response) => {
 });
 
 questionRoute.put('/:id', (req: Request, res: Response) => {
-    let {category, title, optionalSubContent, answerTypology, answers} = req.body;
+    let {subject, category, title, optionalSubContent, answerTypology, answers} = req.body;
     let id = req.params.id;
-    if((!category || !title || !answerTypology) ||
-        answerTypology == "multi" && !answers ){
+    if((!subject || !category || !title || !answerTypology) ||
+        answerTypology == "multi" && (!answers || answers.length <= 1) ){
         Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PARAMETER)
         return
     }
-    let q: QuestionType = {category, title, optionalSubContent, answerTypology, answers}
+    let q: IQuestion = {subject, category, title, optionalSubContent, answerTypology, answers}
     updateQuestion(id, q)
         .then(result => {
             if(!result) {
@@ -95,5 +94,4 @@ questionRoute.delete('/:id', (req: Request, res: Response) => {
                 Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PARAMETER);
             });
     }
-
 });

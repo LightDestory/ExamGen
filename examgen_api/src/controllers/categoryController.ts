@@ -1,23 +1,23 @@
-import Question from "../models/Question";
+import {IQuestion, model as Questions} from "../models/Question";
 import {EnforceDocument, UpdateWriteOpResult} from "mongoose";
-import {IQuestion} from "../interfaces/IQuestion";
 
-function getAllCategories(): Promise<any[]> {
-    return Question.distinct("category").exec();
+function getAllCategories(subject: String): Promise<any[]> {
+    return Questions.find({"subject": subject})
+        .distinct("category").exec();
 }
 
-function getCategoryContents(cat: String): Promise<EnforceDocument<IQuestion, {}>[]> {
-    return Question.find({"category": cat}, {"title": true, "_id": true})
+function getCategoryContents(subject: String, category: String): Promise<EnforceDocument<IQuestion, {}>[]> {
+    return Questions.find({"subject": subject, "category": category}, '_id title answerTypology')
         .exec();
 }
 
-function updateCategory(currCat: String, newName: String): Promise<UpdateWriteOpResult> {
-    return Question.updateMany({"category": currCat}, {"category": newName})
+function updateCategory(subject: String, currCategory: String, newCategory: String): Promise<UpdateWriteOpResult> {
+    return Questions.updateMany({"subject": subject, "category": currCategory}, {"category": newCategory})
         .exec();
 }
 
-function deleteCategory(cat: String): Promise<any> {
-    return Question.deleteMany( {"category": cat})
+function deleteCategory(subject: String, category: String): Promise<any> {
+    return Questions.deleteMany( {"subject": subject, "category": category})
         .exec();
 }
 

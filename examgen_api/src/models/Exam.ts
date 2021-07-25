@@ -1,7 +1,30 @@
-import mongoose, {Schema} from "mongoose";
-import IExam from "../interfaces/IExam";
+import mongoose, {Model, Schema} from "mongoose";
+import {IQuestion} from "./Question";
+
+interface IExam {
+    subject: String,
+    date: Date,
+    title: String,
+    questions: IQuestion[]
+}
+
+interface ExamRequest {
+    subject: String,
+    title: String,
+    questions: [
+        {
+            category: String,
+            overallQta: String
+            multiQta: String
+        }
+    ]
+}
 
 const ExamSchema: Schema<IExam> = new Schema<IExam>({
+    subject: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         required: true
@@ -10,6 +33,8 @@ const ExamSchema: Schema<IExam> = new Schema<IExam>({
         type: String,
         required: true
     },
-    questions: [{_id: false, question: {type: Schema.Types.ObjectId, ref: 'Question' }}]
+    questions: [{_id: false, question: {type: Schema.Types.ObjectId, ref: 'Question'}}]
+
 });
-export default mongoose.model<IExam>("Exam", ExamSchema);
+const model: Model<IExam> = mongoose.model<IExam>("Exam", ExamSchema);
+export {IExam, ExamRequest, model}

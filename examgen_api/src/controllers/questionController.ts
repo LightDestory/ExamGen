@@ -1,35 +1,33 @@
-import Question from "../models/Question";
 import {EnforceDocument} from "mongoose";
-import {IQuestion} from "../interfaces/IQuestion";
-import {QuestionType} from "../models/Question.type";
+import {IQuestion, model as Questions} from "../models/Question";
 
 function getAllQuestions(): Promise<EnforceDocument<IQuestion, {}>[]> {
-    return Question.find({}, '_id title category answerTypology')
+    return Questions.find({}, '_id subject title category answerTypology')
         .exec();
 }
 
 function getQuestionContent(id: String): Promise<IQuestion | null> {
-    return Question.findById(id)
+    return Questions.findById(id)
         .exec();
 }
 
-function createQuestion(question: QuestionType) : Promise<IQuestion> {
-    let q = new Question(question).save();
+function createQuestion(question: IQuestion) : Promise<IQuestion> {
+    let q = new Questions(question).save();
     return q;
 }
 
-function updateQuestion(id: String, data: QuestionType): Promise<IQuestion|null> {
-    return Question.findByIdAndUpdate(id, data)
+function updateQuestion(id: String, data: IQuestion): Promise<IQuestion|null> {
+    return Questions.findByIdAndUpdate(id, data)
         .exec();
 }
 
 function deleteQuestion(id: String): Promise<IQuestion | null> {
-    return Question.findByIdAndDelete(id)
+    return Questions.findByIdAndDelete(id)
         .exec();
 }
 
 function deleteAllQuestions(): Promise<any> {
-    return Question.deleteMany({})
+    return Questions.deleteMany({})
         .exec()
 }
 

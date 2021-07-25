@@ -14,16 +14,18 @@ Authorization: capybara
 Content-Type: application/json
 
 {
-  "date": "2025-12-12",
-  "title": "Compito 3",
+  "subject": "BackEnd",
+  "title": "Compito 1",
   "questions": [
     {
-      "category": "Animals",
-      "qta": "2"
+      "category": "PHP",
+      "overallQta": "2",
+      "multiQta": "0"
     },
     {
-      "category": "Goodness",
-      "qta": "1"
+      "category": "JS",
+      "overallQta": "2",
+      "multiQta": "0"
     }
   ]
 }
