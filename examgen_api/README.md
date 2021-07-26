@@ -16,7 +16,7 @@ The services are very basic but *I tried to use new technologies* such as:
 The services is based on the URL:
 > http|https://YOUR_DOMAIN/api/ ...
 
-The documentation is available in [HTML](https://htmlpreview.github.io/?https://github.com/LightDestory/ExamGen/blob/master/examgen_api/docs/docs_html.html) or [Markdown](./docs/docs_markdown.md) format. 
+The documentation is available in [HTML](https://rawcdn.githack.com/LightDestory/ExamGen/5f73a9f2e31e37144cd22f17d0d16e20093e41ec/examgen_api/docs/docs_html.html) or [Markdown](./docs/docs_markdown.md) format. 
 
 ## :gear: Setup
 
