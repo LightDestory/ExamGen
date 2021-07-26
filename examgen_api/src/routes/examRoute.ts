@@ -31,6 +31,29 @@ examRoute.get('/:id', (req: Request, res: Response) => {
         });
 });
 
+examRoute.get('/:id/file', (req: Request, res: Response) => {
+    let id: String = req.params.id
+    getExamContent(id)
+        .then((result: IExam | null) => {
+            if(!result) {
+                Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_FOUND);
+            }
+            else{
+                const pdg = new PDFgen();
+                pdg.generateStream(result)
+                    .then((stream) => {
+                        Sender.getInstance().sendFile(res, 200, stream);
+                    })
+                    .catch(() => {
+                        Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PDF_GEN);
+                    });
+            }
+        })
+        .catch(() => {
+            Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PARAMETER);
+        });
+});
+
 examRoute.post('/generate', async (req: Request, res: Response) => {
     let {subject, title, questions} = req.body;
     if((!subject || !title || !questions)){
@@ -57,17 +80,11 @@ examRoute.post('/generate', async (req: Request, res: Response) => {
             const pdg = new PDFgen();
             pdg.generateStream(result)
                 .then((stream) => {
-                    res
-                        .writeHead(200, {
-                            'Content-Length': Buffer.byteLength(stream),
-                            'Content-Type': 'application/pdf',
-                            'Content-disposition': 'attachment;filename=exam.pdf',
-                        })
-                        .end(stream);
+                    Sender.getInstance().sendFile(res, 200, stream);
                 })
                 .catch(() => {
                     Sender.getInstance().sendError(res, Sender.ERROR_TYPE_PDF_GEN);
-                })
+                });
         })
         .catch(() => {
             Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_ENOUGH);

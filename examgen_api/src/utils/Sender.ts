@@ -51,4 +51,14 @@ export class Sender {
         data.result = result;
         response.status(httpCode).json(data);
     }
+
+    public sendFile(response: Response, httpCode: number, stream: Buffer) {
+        response
+            .writeHead(httpCode, {
+                'Content-Length': Buffer.byteLength(stream),
+                'Content-Type': 'application/pdf',
+                'Content-disposition': 'attachment;filename=exam.pdf',
+            })
+            .end(stream);
+    }
 }
