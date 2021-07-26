@@ -29,5 +29,6 @@ If you got everything, we can start building:
 
 1) Install all the dependencies using __npm install__ inside the back-end repo folder.
 2) Make a copy of _.env.dist_ from tesmplates folder and paste it on back-end root folder, then fill it with your settings.
-3) Run the application running __npm run start__.
-4) The back-end will listening to locahost at your prefered port. You can now set up a reverse proxy or a direct DNS record to your machine. This is sys-admin stuff that do not requires my explaination.
+3) Build the application running __npm run build__.
+4) Run the application running __npm run start__.
+5) The back-end will listening to locahost at your prefered port. You can now set up a reverse proxy or a direct DNS record to your machine. This is sys-admin stuff that do not requires my explaination.
