@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
-
-const configuration = require('dotenv').config();
+import {DEFAULT_DB_URL} from "../config/globals";
+require('dotenv').config();
 
 class Database {
     private db_url: string;
     private static instance: Database | undefined;
 
     private constructor() {
-        this.db_url = process.env.DB_URL || "mongodb://localhost/examgen_data"
+        this.db_url = process.env.DB_URL || DEFAULT_DB_URL
     }
 
     async isConnected(): Promise<boolean> {
