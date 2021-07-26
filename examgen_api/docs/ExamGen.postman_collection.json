@@ -1,0 +1,3618 @@
+{
+	"info": {
+		"_postman_id": "bd084545-e48f-44b4-b6ce-5f0285eee633",
+		"name": "ExamGen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Checking Service",
+			"item": [
+				{
+					"name": "Ping Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/ping",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"ping"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful Ping",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/ping",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"ping"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-eLBfvylQcKZZ8Isl8gRD36P+aFg\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:08:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": \"pong\"\n}"
+						},
+						{
+							"name": "Failed Ping",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/ping",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"ping"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"34-qZ9ILXW7CK95swCC5EL1FJTSP0E\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:09:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"The API KEY is invalid\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "List all Questions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/question",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "633"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"279-ZZK0fTnw2vPGy8lLKzX6ptyX9z0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:17:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"60fed9ec1db0d90980dad073\",\n            \"subject\": \"Web Programming\",\n            \"category\": \"PHP\",\n            \"title\": \"Is PHP a nice language?\",\n            \"answerTypology\": \"multi\"\n        },\n        {\n            \"_id\": \"60feda091db0d90980dad075\",\n            \"subject\": \"Web Programming\",\n            \"category\": \"JS\",\n            \"title\": \"Is JS a nice language?\",\n            \"answerTypology\": \"text\"\n        },\n        {\n            \"_id\": \"60fedfbd1db0d90980dad07e\",\n            \"subject\": \"Mobile Programming\",\n            \"category\": \"Kotlin\",\n            \"title\": \"Is Companion Object a nice feature?\",\n            \"answerTypology\": \"text\"\n        },\n        {\n            \"_id\": \"60fee0251db0d90980dad080\",\n            \"subject\": \"Mobile Programming\",\n            \"category\": \"Android\",\n            \"title\": \"Which state is called once on a view life-cycle?\",\n            \"answerTypology\": \"multi\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List full details of a Question",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/question/:QuestionID",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question",
+								":QuestionID"
+							],
+							"variable": [
+								{
+									"key": "QuestionID",
+									"value": "",
+									"description": "The ID of the question you want to explore"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "60fee0251db0d90980dad080",
+											"description": "The ID of the question you want to explore"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-cQrYkwGrRxgHGTBd2YxsQfuhuM0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:20:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60fee0251db0d90980dad080\",\n        \"subject\": \"Mobile Programming\",\n        \"category\": \"Android\",\n        \"title\": \"Which state is called once on a view life-cycle?\",\n        \"answerTypology\": \"multi\",\n        \"answers\": [\n            {\n                \"text\": \"onStop\"\n            },\n            {\n                \"text\": \"onPause\"\n            },\n            {\n                \"text\": \"onResume\"\n            },\n            {\n                \"text\": \"onCreate\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Failed Listing (400)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "12234",
+											"description": "The ID of the question you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Listing (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "60fee0251db0d90980dad079",
+											"description": "The ID of the question you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a new Open Answer Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subject\": \"Name of the related subject\",\r\n  \"category\": \"Name of the related category\",\r\n  \"title\": \"Question's title, the main question which usually ends with '?'\",\r\n  \"optionalSubContent\": \"Optional field to add a sub context to the question\",\r\n  \"answerTypology\": \"text\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/question/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Creation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Advanced Mathematics\",\r\n  \"category\": \"Complex Calculus\",\r\n  \"title\": \"What is 4 plus 4?\",\r\n  \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\r\n  \"answerTypology\": \"text\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60fee5b01db0d90980dad087\",\n        \"subject\": \"Advanced Mathematics\",\n        \"category\": \"Complex Calculus\",\n        \"title\": \"What is 4 plus 4?\",\n        \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\n        \"answerTypology\": \"text\",\n        \"answers\": [],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Failed Creation (400)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Advanced Mathematics\",\r\n  \"title\": \"What is 4 plus 4?\",\r\n  \"optionalSubContent\": \"Be careful, 'plus' means '+'!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create a new Multi Answer Question",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subject\": \"Name of the related subject\",\r\n  \"category\": \"Name of the related category\",\r\n  \"title\": \"Question's title, the main question which usually ends with '?'\",\r\n  \"optionalSubContent\": \"Optional field to add a sub context to the question\",\r\n  \"answerTypology\": \"multi\",\r\n  \"answers\": [\r\n    {\r\n      \"text\": \"An answer\"\r\n    },\r\n    ...\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/question/",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Creation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"category\": \"Android\",\r\n  \"title\": \"Which state is called once on a view life-cycle?\",\r\n  \"optionalSubContent\": \"Remember the state switching of android applications!\",\r\n  \"answerTypology\": \"multi\",\r\n  \"answers\": [\r\n    {\r\n      \"text\": \"onStop\"\r\n    },\r\n    {\r\n      \"text\": \"onPause\"\r\n    },\r\n    {\r\n      \"text\": \"onResume\"\r\n    },\r\n    {\r\n      \"text\": \"onCreate\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"_id\": \"60fee7ad1db0d90980dad089\",\n    \"subject\": \"Mobile Programming\",\n    \"category\": \"Android\",\n    \"title\": \"Which state is called once on a view life-cycle?\",\n    \"optionalSubContent\": \"Remember the state switching of android applications!\",\n    \"answerTypology\": \"multi\",\n    \"answers\": [\n      {\n        \"text\": \"onStop\"\n      },\n      {\n        \"text\": \"onPause\"\n      },\n      {\n        \"text\": \"onResume\"\n      },\n      {\n        \"text\": \"onCreate\"\n      }\n    ],\n    \"__v\": 0\n  }\n}"
+						},
+						{
+							"name": "Failed Creation (400)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"category\": \"Android\",\r\n  \"optionalSubContent\": \"Remember the state switching of android applications!\",\r\n  \"answerTypology\": \"multi\",\r\n  \"answers\": [\r\n    {\r\n      \"text\": \"onStop\"\r\n    },\r\n    {\r\n      \"text\": \"onPause\"\r\n    },\r\n    {\r\n      \"text\": \"onResume\"\r\n    },\r\n    {\r\n      \"text\": \"onCreate\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										""
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update a Question",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subject\": \"New name of the related subject\",\r\n  \"category\": \"New name of the related category\",\r\n  \"title\": \"New question's title, the main question which usually ends with '?'\",\r\n  \"optionalSubContent\": \"New optional field to add a sub context to the question\",\r\n  \"answerTypology\": \"text\"\r\n  !!! OR !!!\r\n  \"answerTypology\": \"multi\",\r\n  \"answers\": [\r\n    {\r\n      \"text\": \"An answer\"\r\n    },\r\n    ...\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/question/:QuestionID",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question",
+								":QuestionID"
+							],
+							"variable": [
+								{
+									"key": "QuestionID",
+									"value": "",
+									"description": "The ID of the question you want to update"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Update",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Advanced Mathematics\",\r\n  \"category\": \"Complex Calculus\",\r\n  \"title\": \"What is 4 plus 4?\",\r\n  \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\r\n  \"answerTypology\": \"multi\",\r\n  \"answers\": [\r\n      {\r\n          \"text\": \"2\"\r\n      },\r\n      {\r\n          \"text\": \"8\"\r\n      },\r\n      {\r\n          \"text\": \"16\"\r\n      }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "60fee5b01db0d90980dad087",
+											"description": "The ID of the question you want to update"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60fee5b01db0d90980dad087\",\n        \"subject\": \"Advanced Mathematics\",\n        \"category\": \"Complex Calculus\",\n        \"title\": \"What is 4 plus 4?\",\n        \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\n        \"answerTypology\": \"multi\",\n        \"answers\": [\n            {\n                \"text\": \"2\"\n            },\n            {\n                \"text\": \"8\"\n            },\n            {\n                \"text\": \"16\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Failed Update (400)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Advanced Mathematics\",\r\n  \"title\": \"What is 4 plus 4?\",\r\n  \"optionalSubContent\": \"Be careful, 'plus' means '+'!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "60fee5b01db0d90980dad087",
+											"description": "The ID of the question you want to update"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Update (404)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Advanced Mathematics\",\r\n  \"category\": \"Complex Calculus\",\r\n  \"title\": \"What is 4 plus 4?\",\r\n  \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\r\n  \"answerTypology\": \"multi\",\r\n  \"answers\": [\r\n      {\r\n          \"text\": \"2\"\r\n      },\r\n      {\r\n          \"text\": \"8\"\r\n      },\r\n      {\r\n          \"text\": \"16\"\r\n      }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "60fee5b01db0d90980dad012",
+											"description": "The ID of the question you want to update"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Question",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/question/:QuestionID",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question",
+								":QuestionID"
+							],
+							"variable": [
+								{
+									"key": "QuestionID",
+									"value": "",
+									"description": "The ID of the question you want to delete"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Deletion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "",
+											"description": "The ID of the question you want to delete"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-474U4X4Il5hoyqw5PFiqKgMH6Xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60feda091db0d90980dad075\",\n        \"subject\": \"Web Programming\",\n        \"category\": \"JS\",\n        \"title\": \"Is JS a nice language?\",\n        \"answerTypology\": \"text\",\n        \"answers\": [],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Failed Deletion (400)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "1234",
+											"description": "The ID of the question you want to delete"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Deletion (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/:QuestionID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										":QuestionID"
+									],
+									"variable": [
+										{
+											"key": "QuestionID",
+											"value": "60fee0251db0d90980dad079",
+											"description": "The ID of the question you want to delete"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete all Questions",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/question/all",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"question",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Deletion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/question/all",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"question",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-474U4X4Il5hoyqw5PFiqKgMH6Xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"deletions\": 999\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Questions' Subject",
+			"item": [
+				{
+					"name": "List all Subjects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/subject",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-1OTkWQmQUr2mThUBH+alC7vXLMA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:11:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        \"Web Development\",\n        \"Mobile Development\",\n        \"Networking\",\n        \"Internet Security\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List Questions by Subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject of the questions you want to list"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject of the questions you want to list"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "250"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"fa-pfANJQxPL+MzD+V0soQymsPX2NE\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:54:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"60fed9ec1db0d90980dad073\",\n            \"category\": \"PHP\",\n            \"title\": \"Is PHP a nice language?\",\n            \"answerTypology\": \"multi\"\n        },\n        {\n            \"_id\": \"60feda091db0d90980dad075\",\n            \"category\": \"JS\",\n            \"title\": \"Is JS a nice language?\",\n            \"answerTypology\": \"text\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Failed Listing (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Studies",
+											"description": "The name of the subject of the questions you want to list"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:54:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Rename Subject",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"NewName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject that you want to change"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful Rename",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"BackEndDevelopment\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "BackEnd",
+											"description": "The name of the subject that you want to change"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-ijU8ZFTjHymzrzz1FtK58lk9qoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:14:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"updates\": 6\n    }\n}"
+						},
+						{
+							"name": "Failed Rename (404)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"BackEndDevelopment\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "BackEnd",
+											"description": "The name of the subject that you want to change"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:15:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Subject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject that you want to delete"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Deletion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "BackEndDevelopment",
+											"description": "The name of the subject that you want to delete"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-474U4X4Il5hoyqw5PFiqKgMH6Xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"deletions\": 6\n    }\n}"
+						},
+						{
+							"name": "Failed Deletion (404)",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "BackEnd",
+											"description": "The name of the subject that you want to change"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:15:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Questions' Category",
+			"item": [
+				{
+					"name": "List all Categories of a Subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName/category",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName",
+								"category"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject you want to list categories"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject you want to list categories"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-+/9uII62yhq9jqBdmQoqhE3ZoA0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:58:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        \"JS\",\n        \"PHP\"\n    ]\n}"
+						},
+						{
+							"name": "Failed Listing (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Studies",
+											"description": "The name of the subject you want to list categories"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:59:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List Questions by Subject and Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName",
+								"category",
+								":CategoryName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "Web Programming",
+									"description": "The name of the subject of the questions you want to list"
+								},
+								{
+									"key": "CategoryName",
+									"value": "Haskell",
+									"description": "The name of the category of the questions you want to list"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject of the questions you want to list"
+										},
+										{
+											"key": "CategoryName",
+											"value": "PHP",
+											"description": "The name of the category of the questions you want to list"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"7d-pNDOzH7q1DIGU5UinOUedzGb3uA\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:01:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"60fed9ec1db0d90980dad073\",\n            \"title\": \"Is PHP a nice language?\",\n            \"answerTypology\": \"multi\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Failed Listing (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "",
+											"description": "The name of the subject of the questions you want to list"
+										},
+										{
+											"key": "CategoryName",
+											"value": "",
+											"description": "The name of the category of the questions you want to list"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:02:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Rename Subject's Category",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"NewName\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName",
+								"category",
+								":CategoryName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject that you want to change"
+								},
+								{
+									"key": "CategoryName",
+									"value": "",
+									"description": "The name of the category that you want to change"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successful Rename",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"JavaScript\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"key": "CategoryName",
+											"value": "JS",
+											"description": "The name of the category that you want to change"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "43"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2b-ijU8ZFTjHymzrzz1FtK58lk9qoQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:14:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"updates\": 12\n    }\n}"
+						},
+						{
+							"name": "Failed Rename (404)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"PHP HyperText Processor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Wev Pvogranning",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"key": "CategoryName",
+											"value": "PHA",
+											"description": "The name of the category that you want to change"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:15:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Subject",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"subject",
+								":SubjectName",
+								"category",
+								":CategoryName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject that you want to change"
+								},
+								{
+									"key": "CategoryName",
+									"value": "",
+									"description": "The name of the category that you want to delete"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Deletion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"key": "CategoryName",
+											"value": "PHP",
+											"description": "The name of the category that you want to delete"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-474U4X4Il5hoyqw5PFiqKgMH6Xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"deletions\": 1\n    }\n}"
+						},
+						{
+							"name": "Failed Deletion (404)",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Wev Pvogranning",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"key": "CategoryName",
+											"value": "TS",
+											"description": "The name of the category that you want to delete"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:15:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Exams",
+			"item": [
+				{
+					"name": "List all past Exams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/exam/history",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								"history"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/history",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"history"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "633"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"279-ZZK0fTnw2vPGy8lLKzX6ptyX9z0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:17:51 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"60feb06f6d13712808909bf4\",\n            \"subject\": \"BackEnd\",\n            \"date\": \"2021-07-26T00:00:00.000Z\",\n            \"title\": \"Compito 1\"\n        },\n        {\n            \"_id\": \"60feedeeb4464105a014b628\",\n            \"subject\": \"Mobile Programming\",\n            \"date\": \"2021-07-26T00:00:00.000Z\",\n            \"title\": \"Compito A\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List all past Exams by Subject",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/exam/history/:SubjectName",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								"history",
+								":SubjectName"
+							],
+							"variable": [
+								{
+									"key": "SubjectName",
+									"value": "",
+									"description": "The name of the subject we are looking for"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/history/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"history",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-cQrYkwGrRxgHGTBd2YxsQfuhuM0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:20:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"60feedeeb4464105a014b628\",\n            \"date\": \"2021-07-26T00:00:00.000Z\",\n            \"title\": \"Compito A\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "List full details of a Exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/exam/:ExamID",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								":ExamID"
+							],
+							"variable": [
+								{
+									"key": "ExamID",
+									"value": "",
+									"description": "The ID of the exam you want to explore"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Listing",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b628",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-cQrYkwGrRxgHGTBd2YxsQfuhuM0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:20:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60fee0251db0d90980dad080\",\n        \"subject\": \"Mobile Programming\",\n        \"category\": \"Android\",\n        \"title\": \"Which state is called once on a view life-cycle?\",\n        \"answerTypology\": \"multi\",\n        \"answers\": [\n            {\n                \"text\": \"onStop\"\n            },\n            {\n                \"text\": \"onPause\"\n            },\n            {\n                \"text\": \"onResume\"\n            },\n            {\n                \"text\": \"onCreate\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
+						},
+						{
+							"name": "Failed Listing (400)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "12345",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Listing (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b629",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Generate PDF of a past Exam",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/exam/:ExamID/file",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								":ExamID",
+								"file"
+							],
+							"variable": [
+								{
+									"key": "ExamID",
+									"value": "",
+									"description": "The ID of the exam you want to explore"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Generation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID/file",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID",
+										"file"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b628",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-cQrYkwGrRxgHGTBd2YxsQfuhuM0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:20:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "PDF File"
+						},
+						{
+							"name": "Failed Generation (400)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID/file",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID",
+										"file"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "12345",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Generation (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID/file",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID",
+										"file"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b629",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						},
+						{
+							"name": "Failed Generation  (500)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID/file",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID",
+										"file"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b628",
+											"description": "The ID of the exam you want to explore"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unable to process the pdf generation, server issue!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Generate a new Exam",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"subject\": \"The name of the related subject. It should be one of the available ones.\",\r\n  \"title\": \"A friendly and short title\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"The name of the related question pool collection. It should be one of the available ones.\",\r\n      \"overallQta\": \"The overall quantity of questions that will be put inside the exam.\",\r\n      \"multiQta\": \"The quantity of multi answer questions that will be selected. If -1 is set, overallQta will be a mix of the two types of questions, if a number is set, there will be add the exact number of multi answer questions and the rest will be open answers.\"\r\n    },\r\n    ...\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/api/exam/generate",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								"generate"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Generation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"Kotlin\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"0\"\r\n    },\r\n    {\r\n      \"category\": \"Android\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"1\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/exam/generate",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"generate"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"129-cQrYkwGrRxgHGTBd2YxsQfuhuM0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:20:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "PDF File"
+						},
+						{
+							"name": "Failed Generation (400)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/exam/generate",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"generate"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Generation  (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"Kotlin\",\r\n      \"overallQta\": \"99\",\r\n      \"multiQta\": \"-1\"\r\n    },\r\n    {\r\n      \"category\": \"Android\",\r\n      \"overallQta\": \"1287\",\r\n      \"multiQta\": \"600\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/exam/generate",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"generate"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Your creation set is not possible with the current question database!\"\n}"
+						},
+						{
+							"name": "Failed Generation  (500)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"Kotlin\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"0\"\r\n    },\r\n    {\r\n      \"category\": \"Android\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"1\"\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/exam/generate",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"generate"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unable to process the pdf generation, server issue!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Exam",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/exam/:ExamID",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								":ExamID"
+							],
+							"variable": [
+								{
+									"key": "ExamID",
+									"value": "",
+									"description": "The ID of the exam you want to delete"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Deletion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b628",
+											"description": "The ID of the exam you want to delete"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-474U4X4Il5hoyqw5PFiqKgMH6Xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"_id\": \"60feedeeb4464105a014b628\",\n    \"subject\": \"Mobile Programming\",\n    \"date\": \"2021-07-26T00:00:00.000Z\",\n    \"title\": \"Compito A\",\n    \"questions\": [\n      {\n        \"_id\": \"60fedfbd1db0d90980dad07e\",\n        \"subject\": \"Mobile Programming\",\n        \"category\": \"Kotlin\",\n        \"title\": \"Is Companion Object a nice feature?\",\n        \"answerTypology\": \"text\",\n        \"answers\": []\n      },\n      {\n        \"_id\": \"60feeda1b4464105a014b61e\",\n        \"subject\": \"Mobile Programming\",\n        \"category\": \"Kotlin\",\n        \"title\": \"Is Kotlin the same as Java?\",\n        \"answerTypology\": \"text\",\n        \"answers\": []\n      },\n      {\n        \"_id\": \"60feed68b4464105a014b61c\",\n        \"subject\": \"Mobile Programming\",\n        \"category\": \"Android\",\n        \"title\": \"Which state is called every time the view is displayed?\",\n        \"optionalSubContent\": \"Remember the state switching of android applications!\",\n        \"answerTypology\": \"text\",\n        \"answers\": []\n      },\n      {\n        \"_id\": \"60fee0251db0d90980dad080\",\n        \"subject\": \"Mobile Programming\",\n        \"category\": \"Android\",\n        \"title\": \"Which state is called once on a view life-cycle?\",\n        \"answerTypology\": \"multi\",\n        \"answers\": [\n          {\n            \"text\": \"onStop\"\n          },\n          {\n            \"text\": \"onPause\"\n          },\n          {\n            \"text\": \"onResume\"\n          },\n          {\n            \"text\": \"onCreate\"\n          }\n        ]\n      }\n    ],\n    \"__v\": 0\n  }\n}"
+						},
+						{
+							"name": "Failed Deletion (400)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "12345",
+											"description": "The ID of the exam you want to delete"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
+							"name": "Failed Deletion (404)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/:ExamID",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										":ExamID"
+									],
+									"variable": [
+										{
+											"key": "ExamID",
+											"value": "60feedeeb4464105a014b629",
+											"description": "The ID of the exam you want to delete"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 16:21:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete all Exams",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/api/exam/all",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"exam",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Deletion",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/api/exam/all",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"exam",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2d-474U4X4Il5hoyqw5PFiqKgMH6Xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 15:36:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"deletions\": 52\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "capybara",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

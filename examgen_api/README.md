@@ -16,7 +16,7 @@ The services are very basic but *I tried to use new technologies* such as:
 The services is based on the URL:
 > http|https://YOUR_DOMAIN/api/ ...
 
-**WIP**
+The documentation is available in [HTML](./docs/docs_html.html) or [Markdown](./docs/docs_markdown.md) format. 
 
 ## :gear: Setup
 
