@@ -9,7 +9,15 @@ import {getAllSubjects} from "../controllers/subjectController";
 export const examRoute: Router = express.Router();
 
 examRoute.get('/history', (req: Request, res: Response) => {
-    getAllPastExams()
+    getAllPastExams({}, '_id subject title date')
+        .then((results: EnforceDocument<IExam, {}>[]) => {
+            Sender.getInstance().sendResult(res, 200, results);
+        });
+});
+
+examRoute.get('/history/:subject', (req: Request, res: Response) => {
+    let subject: String = req.params.subject;
+    getAllPastExams({"subject": `${subject}`}, '_id title date')
         .then((results: EnforceDocument<IExam, {}>[]) => {
             Sender.getInstance().sendResult(res, 200, results);
         });

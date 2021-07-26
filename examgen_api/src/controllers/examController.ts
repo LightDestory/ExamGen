@@ -2,8 +2,8 @@ import {EnforceDocument, Schema, set} from "mongoose";
 import {ExamRequest, IExam, model as Exams} from "../models/Exam";
 import {IQuestion, model as Questions} from "../models/Question"
 
-function getAllPastExams(): Promise<EnforceDocument<IExam, {}>[]> {
-    return Exams.find({}, '_id subject title date')
+function getAllPastExams(filter: any, projection: String): Promise<EnforceDocument<IExam, {}>[]> {
+    return Exams.find(filter, projection)
         .sort({"date": "desc"})
         .exec();
 }
