@@ -7,23 +7,67 @@
 </mat-toolbar>
 
 <mat-sidenav-container>
-    <mat-sidenav  #sidenav="matSidenav" class="mat-elevation-z12">
-        <button mat-button class="menu-button">
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
-        </button>
-        <button mat-button class="menu-button">
-            <mat-icon>assignment</mat-icon>
-            <span>Exams</span>
-        </button>
-        <button mat-button class="menu-button">
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z12">
+        <mat-accordion>
+            <mat-expansion-panel (opened)="buttonsPanelToggle = true" (closed)="buttonsPanelToggle = false" [expanded]=true>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <button mat-button class="menu-button">
+                            <mat-icon>stars</mat-icon>
+                            <span>Questions</span>
+                        </button>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button mat-button class="menu-button">
+                    <mat-icon>stars</mat-icon>
+                    <span>Questions</span>
+                </button>
+                <button mat-button class="menu-button">
+                    <mat-icon>stars</mat-icon>
+                    <span>Questions</span>
+                </button>
+                <button mat-button class="menu-button">
+                    <mat-icon>stars</mat-icon>
+                    <span>Questions</span>
+                </button>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="buttonsPanelToggle = true" (closed)="buttonsPanelToggle = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <button mat-button class="menu-button">
+                            <mat-icon>assignment</mat-icon>
+                            <span>Exams</span>
+                        </button>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button mat-button class="menu-button">
+                    <mat-icon>stars</mat-icon>
+                    <span>Questions</span>
+                </button>
+                <button mat-button class="menu-button">
+                    <mat-icon>stars</mat-icon>
+                    <span>Questions</span>
+                </button>
+                <button mat-button class="menu-button">
+                    <mat-icon>stars</mat-icon>
+                    <span>Questions</span>
+                </button>
+                <button mat-button class="menu-button" [routerLinkActive]="['active-link']" [routerLink]="['about']">
+                    <mat-icon>info</mat-icon>
+                    <span>About</span>
+                </button>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button" [routerLinkActive]="['active-link']" [routerLink]="['about']">
             <mat-icon>info</mat-icon>
             <span>About</span>
         </button>
 
-        <mat-divider></mat-divider>
-
-        <button mat-button class="menu-button">
+        <button mat-button class="menu-button" (click)="logoutOnClick()">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
         </button>
@@ -31,7 +75,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="content mat-elevation-z12">
-            Main content here!
+            <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

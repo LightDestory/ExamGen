@@ -9,7 +9,7 @@ mat-sidenav {
     text-align: center;
 }
 
-button:hover {
+.active-link, button:hover {
     color: #ffd740;
 }
 
@@ -37,9 +37,6 @@ mat-sidenav-container {
     align-items: center;
     justify-content: flex-start;
     font-size: 1rem;
-}
-mat-icon {
-    margin-right: 8px;
 }
 mat-divider {
     margin-top: 16px;

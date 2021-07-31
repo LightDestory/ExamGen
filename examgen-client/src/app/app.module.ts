@@ -12,13 +12,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GenericDialogComponent } from './components/dialogs/generic-dialog/generic-dialog.component';
 import { HttpInterceptorService } from './interceptors/http/http-interceptor.service';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    GenericDialogComponent
+    GenericDialogComponent,
+    AboutComponent
   ],
   entryComponents: [GenericDialogComponent],
   imports: [
