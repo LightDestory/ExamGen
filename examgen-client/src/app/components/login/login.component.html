@@ -1,0 +1,37 @@
+<div class="container login-container" fxLayout="row" fxLayoutAlign="center center">
+    <form [formGroup]="loginForm" fxFlex.xs="90%">
+        <mat-card>
+            <mat-card-title class="text-center">ExamGen</mat-card-title>
+            <mat-card-subtitle class="text-center">Access to a specific server</mat-card-subtitle>
+            <mat-card-content>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-icon matSuffix>vpn_key</mat-icon>
+                    <mat-label>Enter your super secret key</mat-label>
+                    <input id="keyInput" matInput formControlName="secretKey" type="text">
+                    <mat-error id="requiredKeyError" *ngIf="loginForm.controls['secretKey'].hasError('required')">
+                        Your key is <strong>required</strong> to proceed!
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-icon matSuffix>cloud</mat-icon>
+                    <mat-label>Enter your desidered endpoint</mat-label>
+                    <input id="endpointInput" matInput formControlName="endpoint" type="text">
+                    <mat-error id="requiredEndpointError" *ngIf="loginForm.controls['endpoint'].hasError('required')">
+                        A endpoint URL is <strong>required</strong> to proceed!
+                    </mat-error>
+                    <mat-hint>It must be an HTTP URL!</mat-hint>
+                </mat-form-field>
+            </mat-card-content>
+
+            <mat-card-actions class="login-buttons">
+                <button mat-raised-button id="login" color="primary" [disabled]="loginForm.invalid || loading"
+                    (click)="login()">Login</button>
+            </mat-card-actions>
+
+        </mat-card>
+
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </form>
+</div>

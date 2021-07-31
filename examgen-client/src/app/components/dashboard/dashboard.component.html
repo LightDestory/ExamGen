@@ -1,0 +1,37 @@
+<mat-toolbar class="mat-elevation-z12" color="primary">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+        <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+        <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+    ExamGen Dashboard
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav  #sidenav="matSidenav" class="mat-elevation-z12">
+        <button mat-button class="menu-button">
+            <mat-icon>stars</mat-icon>
+            <span>Questions</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>assignment</mat-icon>
+            <span>Exams</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </button>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z12">
+            Main content here!
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
