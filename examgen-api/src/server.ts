@@ -1,4 +1,5 @@
 import express, {Application} from 'express';
+import cors from 'cors';
 import bodyParser from "body-parser";
 import db from "./db/database"
 import {authCheck} from "./middlewares/authMiddleware";
@@ -20,6 +21,7 @@ function bootstrap() {
         if (connected) {
             let port = process.env.PORT || DEFAULT_PORT;
             console.log(`Connection with database established!`);
+            app.use(cors({origin: '*'}));
             app.use(express.json(), express.text(), bodyParser.urlencoded({extended: false}));
             app.use(authCheck);
             registerRoutes(app);
