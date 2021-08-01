@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bd084545-e48f-44b4-b6ce-5f0285eee633",
+		"_postman_id": "04dca22b-1753-43d6-9f14-a90bd20112a4",
 		"name": "ExamGen",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -481,7 +481,7 @@
 							"status": "Created",
 							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60fee5b01db0d90980dad087\",\n        \"subject\": \"Advanced Mathematics\",\n        \"category\": \"Complex Calculus\",\n        \"title\": \"What is 4 plus 4?\",\n        \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\n        \"answerTypology\": \"text\",\n        \"answers\": [],\n        \"__v\": 0\n    }\n}"
 						},
@@ -515,7 +515,7 @@
 							"status": "Bad Request",
 							"code": 400,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
 						}
@@ -579,7 +579,7 @@
 							"status": "Created",
 							"code": 201,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n  \"status\": \"success\",\n  \"result\": {\n    \"_id\": \"60fee7ad1db0d90980dad089\",\n    \"subject\": \"Mobile Programming\",\n    \"category\": \"Android\",\n    \"title\": \"Which state is called once on a view life-cycle?\",\n    \"optionalSubContent\": \"Remember the state switching of android applications!\",\n    \"answerTypology\": \"multi\",\n    \"answers\": [\n      {\n        \"text\": \"onStop\"\n      },\n      {\n        \"text\": \"onPause\"\n      },\n      {\n        \"text\": \"onResume\"\n      },\n      {\n        \"text\": \"onCreate\"\n      }\n    ],\n    \"__v\": 0\n  }\n}"
 						},
@@ -613,7 +613,7 @@
 							"status": "Bad Request",
 							"code": 400,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
 						}
@@ -691,7 +691,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"_id\": \"60fee5b01db0d90980dad087\",\n        \"subject\": \"Advanced Mathematics\",\n        \"category\": \"Complex Calculus\",\n        \"title\": \"What is 4 plus 4?\",\n        \"optionalSubContent\": \"Be careful, 'plus' means '+'!\",\n        \"answerTypology\": \"multi\",\n        \"answers\": [\n            {\n                \"text\": \"2\"\n            },\n            {\n                \"text\": \"8\"\n            },\n            {\n                \"text\": \"16\"\n            }\n        ],\n        \"__v\": 0\n    }\n}"
 						},
@@ -732,7 +732,7 @@
 							"status": "Bad Request",
 							"code": 400,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
 						},
@@ -773,7 +773,7 @@
 							"status": "OK",
 							"code": 200,
 							"_postman_previewlanguage": "json",
-							"header": null,
+							"header": [],
 							"cookie": [],
 							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
 						}
@@ -1139,7 +1139,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        \"Web Development\",\n        \"Mobile Development\",\n        \"Networking\",\n        \"Internet Security\"\n    ]\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"Web Development\",\n            \"count\": 21\n        },\n        {\n            \"_id\": \"Mobile Development\",\n            \"count\": 33\n        },\n        {\n            \"_id\": \"Networking\",\n            \"count\": 2\n        },\n        {\n            \"_id\": \"Internet Security\",\n            \"count\": 99\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -1467,6 +1467,76 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						},
+						{
+							"name": "Failed Rename (409)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"BackEndDevelopment\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "BackEnd",
+											"description": "The name of the subject that you want to change"
+										}
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:15:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unable to rename due to an already existing resource!\"\n}"
 						}
 					]
 				},
@@ -1712,7 +1782,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        \"JS\",\n        \"PHP\"\n    ]\n}"
+							"body": "{\n    \"status\": \"success\",\n    \"result\": [\n        {\n            \"_id\": \"PHP\",\n            \"count\": 3\n        },\n        {\n            \"_id\": \"JS\",\n            \"count\": 2\n        }\n    ]\n}"
 						},
 						{
 							"name": "Failed Listing (404)",
@@ -2144,6 +2214,83 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unknown resource\"\n}"
+						},
+						{
+							"name": "Failed Rename (409)",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"PHP HyperText Processor\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"key": "CategoryName",
+											"value": "PHP",
+											"description": "The name of the category that you want to change"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2e-ZTtTkXRY3xBQ5idQVS4obANJ2yY\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 14:15:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Unable to rename due to an already existing resource!\"\n}"
 						}
 					]
 				},
@@ -3016,15 +3163,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"Kotlin\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"0\"\r\n    },\r\n    {\r\n      \"category\": \"Android\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"1\"\r\n    }\r\n  ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/api/exam/generate",
 									"host": [
@@ -3086,15 +3224,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/api/exam/generate",
 									"host": [
@@ -3156,15 +3285,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"Kotlin\",\r\n      \"overallQta\": \"99\",\r\n      \"multiQta\": \"-1\"\r\n    },\r\n    {\r\n      \"category\": \"Android\",\r\n      \"overallQta\": \"1287\",\r\n      \"multiQta\": \"600\"\r\n    }\r\n  ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/api/exam/generate",
 									"host": [
@@ -3226,15 +3346,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"subject\": \"Mobile Programming\",\r\n  \"title\": \"Compito A\",\r\n  \"questions\": [\r\n    {\r\n      \"category\": \"Kotlin\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"0\"\r\n    },\r\n    {\r\n      \"category\": \"Android\",\r\n      \"overallQta\": \"2\",\r\n      \"multiQta\": \"1\"\r\n    }\r\n  ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "localhost:5000/api/exam/generate",
 									"host": [

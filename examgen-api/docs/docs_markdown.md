@@ -53,6 +53,7 @@
 
 >_Every endpoint requires an API KEY. The API is set by the service's administrator on the .env file and must be sent with the "Authorization" header on the HTTP Request!_
 
+
 ## Checking Service
 
 
@@ -954,10 +955,22 @@ URL: localhost:5000/api/subject
 {
     "status": "success",
     "result": [
-        "Web Development",
-        "Mobile Development",
-        "Networking",
-        "Internet Security"
+        {
+            "_id": "Web Development",
+            "count": 21
+        },
+        {
+            "_id": "Mobile Development",
+            "count": 33
+        },
+        {
+            "_id": "Networking",
+            "count": 2
+        },
+        {
+            "_id": "Internet Security",
+            "count": 99
+        }
     ]
 }
 ```
@@ -1172,6 +1185,43 @@ URL: localhost:5000/api/subject/:SubjectName
 
 
 
+##### III. Example Request: Failed Rename (409)
+
+
+
+***Query:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| SubjectName | BackEnd | The name of the subject that you want to change |
+
+
+
+***Body:***
+
+```js        
+{
+    "name": "BackEndDevelopment"
+}
+```
+
+
+
+##### III. Example Response: Failed Rename (409)
+```js
+{
+    "status": "error",
+    "result": "Unable to rename due to an already existing resource!"
+}
+```
+
+
+***Status Code:*** 409
+
+<br>
+
+
+
 ### 4. Delete Subject
 
 
@@ -1299,8 +1349,14 @@ URL: localhost:5000/api/subject/:SubjectName/category
 {
     "status": "success",
     "result": [
-        "JS",
-        "PHP"
+        {
+            "_id": "PHP",
+            "count": 3
+        },
+        {
+            "_id": "JS",
+            "count": 2
+        }
     ]
 }
 ```
@@ -1531,6 +1587,44 @@ URL: localhost:5000/api/subject/:SubjectName/category/:CategoryName
 {
     "status": "error",
     "result": "Unknown resource"
+}
+```
+
+
+***Status Code:*** 404
+
+<br>
+
+
+
+##### III. Example Request: Failed Rename (409)
+
+
+
+***Query:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| SubjectName | Web Programming | The name of the subject that you want to change |
+| CategoryName | PHP | The name of the category that you want to change |
+
+
+
+***Body:***
+
+```js        
+{
+    "name": "PHP HyperText Processor"
+}
+```
+
+
+
+##### III. Example Response: Failed Rename (409)
+```js
+{
+    "status": "error",
+    "result": "Unable to rename due to an already existing resource!"
 }
 ```
 
@@ -2040,29 +2134,6 @@ URL: localhost:5000/api/exam/generate
 
 
 
-***Body:***
-
-```js        
-{
-  "subject": "Mobile Programming",
-  "title": "Compito A",
-  "questions": [
-    {
-      "category": "Kotlin",
-      "overallQta": "2",
-      "multiQta": "0"
-    },
-    {
-      "category": "Android",
-      "overallQta": "2",
-      "multiQta": "1"
-    }
-  ]
-}
-```
-
-
-
 ##### I. Example Response: Successfull Generation
 ```js
 PDF File
@@ -2083,17 +2154,6 @@ PDF File
 | Key | Value | Description |
 | --- | ------|-------------|
 | Content-Type | application/json |  |
-
-
-
-***Body:***
-
-```js        
-{
-  "subject": "Mobile Programming",
-  "title": "Compito A"
-}
-```
 
 
 
@@ -2123,29 +2183,6 @@ PDF File
 
 
 
-***Body:***
-
-```js        
-{
-  "subject": "Mobile Programming",
-  "title": "Compito A",
-  "questions": [
-    {
-      "category": "Kotlin",
-      "overallQta": "99",
-      "multiQta": "-1"
-    },
-    {
-      "category": "Android",
-      "overallQta": "1287",
-      "multiQta": "600"
-    }
-  ]
-}
-```
-
-
-
 ##### III. Example Response: Failed Generation  (404)
 ```js
 {
@@ -2169,29 +2206,6 @@ PDF File
 | Key | Value | Description |
 | --- | ------|-------------|
 | Content-Type | application/json |  |
-
-
-
-***Body:***
-
-```js        
-{
-  "subject": "Mobile Programming",
-  "title": "Compito A",
-  "questions": [
-    {
-      "category": "Kotlin",
-      "overallQta": "2",
-      "multiQta": "0"
-    },
-    {
-      "category": "Android",
-      "overallQta": "2",
-      "multiQta": "1"
-    }
-  ]
-}
-```
 
 
 
@@ -2410,4 +2424,4 @@ URL: localhost:5000/api/exam/all
 
 ---
 [Back to top](#examgen)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-07-26 20:07:01 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-01 12:09:08 by [docgen](https://github.com/thedevsaddam/docgen)
