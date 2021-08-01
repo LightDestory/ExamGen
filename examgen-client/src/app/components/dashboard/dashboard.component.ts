@@ -55,23 +55,19 @@ export class DashboardComponent implements OnInit {
         "title": "Deleting ALL subjects",
         "desc": "Do you really want to delete all the subjects?",
         "isYesNo": true
-      },
-      disableClose: true
-    }).afterClosed().subscribe((result) => {
+      }}).afterClosed().subscribe((result) => {
       if (result) {
         this.loadingSpinnerRef = this.helper.openLoadingDialog();
         this.endpointSubject.deleteAllSubjects().subscribe(
           data => {
             this.loadingSpinnerRef!.close();
             this.matdialog.open(GenericDialogComponent, {
-              disableClose: true,
               data: {
                 "icon": "check",
                 "title": "Subjects deleted",
                 "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
                 "isYesNo": false
-              }
-            }).afterClosed().subscribe(() => this.router.navigate(['dashboard']));
+              }}).afterClosed().subscribe(() => this.router.navigate(['dashboard']));
           },
           error => {
             this.loadingSpinnerRef!.close();
@@ -89,9 +85,7 @@ export class DashboardComponent implements OnInit {
         "title": "Logging out",
         "desc": "Do you really want to log out from this service?",
         "isYesNo": true
-      },
-      disableClose: true
-    }).afterClosed().subscribe((result) => {
+      }}).afterClosed().subscribe((result) => {
       if (result) {
         this.authStore.performLogOut();
       }

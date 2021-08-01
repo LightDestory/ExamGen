@@ -50,9 +50,7 @@ export class EndpointSharedService {
         "title": title,
         "desc": desc,
         "isYesNo": false
-      },
-      disableClose: true
-    });
+      }});
   }
 
   openLoadingDialog(): MatDialogRef<LoadingDialogComponent> {

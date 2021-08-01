@@ -17,6 +17,7 @@ import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashbo
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
 import { TextInputDialogComponent } from './components/dialogs/text-input-dialog/text-input-dialog.component';
 import { LoadingDialogComponent } from './components/dialogs/loading-dialog/loading-dialog.component';
+import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { LoadingDialogComponent } from './components/dialogs/loading-dialog/load
     TextInputDialogComponent,
     LoadingDialogComponent
   ],
-  entryComponents: [GenericDialogComponent, LoadingDialogComponent],
+  entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -47,7 +48,8 @@ import { LoadingDialogComponent } from './components/dialogs/loading-dialog/load
     provide: HTTP_INTERCEPTORS,
     useClass: HttpInterceptorService,
     multi:true
-    }
+    },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true}}
   ],
   bootstrap: [AppComponent]
 })

@@ -10,6 +10,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
 import { deletionResult } from 'src/app/models/deletionResult';
 import { LoadingDialogComponent } from '../dialogs/loading-dialog/loading-dialog.component';
+import { TextInputDialogComponent } from '../dialogs/text-input-dialog/text-input-dialog.component';
+import { updateResult } from 'src/app/models/updateResult';
 
 @Component({
   selector: 'app-subjects-list',
@@ -58,7 +60,39 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
   }
 
   renameSubject(subjectName: string): void {
-    alert(subjectName);
+    this.matdialog.open(TextInputDialogComponent, {
+      data: {
+        "icon": "warning",
+        "name": subjectName
+      }
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.loadingSpinnerRef = this.helper.openLoadingDialog();
+        this.endpoint.renameSubject(subjectName, result).subscribe(
+          data => {
+            this.loadingSpinnerRef?.close();
+            this.matdialog.open(GenericDialogComponent, {
+              data: {
+                "icon": "check",
+                "title": "Subjects renamed",
+                "desc": `${(<updateResult>data.result).updates} questions has been updated!`,
+                "isYesNo": false
+              }
+            }).afterClosed().subscribe(() => {
+              this.dataSource.data.forEach(sub =>{
+                if( sub._id == subjectName){
+                  sub._id = result;
+                }
+              });
+            });
+          },
+          error => {
+            this.loadingSpinnerRef?.close();
+            this.helper.showServiceErrorDialog(error.status);
+          }
+        )
+      }
+    })
   }
 
   deleteSubject(subjectName: string): void {
@@ -68,8 +102,7 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
         "title": "Deleting subject",
         "desc": `Do you really want to delete '${subjectName}'?`,
         "isYesNo": true
-      },
-      disableClose: true
+      }
     }).afterClosed().subscribe((result) => {
       if (result) {
         this.loadingSpinnerRef = this.helper.openLoadingDialog();
@@ -77,7 +110,6 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
           data => {
             this.loadingSpinnerRef?.close();
             this.matdialog.open(GenericDialogComponent, {
-              disableClose: true,
               data: {
                 "icon": "check",
                 "title": "Subjects deleted",

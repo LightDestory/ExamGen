@@ -53,9 +53,7 @@ export class LoginComponent implements OnInit {
               "title": "Authorized Service Found",
               "desc": "A authroized service has been found. Do you want to log-in?",
               "isYesNo": true
-            },
-            disableClose: true
-          }).afterClosed().subscribe((result) => {
+            }}).afterClosed().subscribe((result) => {
             this.loading = false;
             if(result){
               this.authStore.performLogin(userData);
