@@ -6,7 +6,9 @@ import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint
 import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
 import { SpinnerLoadingComponent } from '../dialogs/spinner-loading/spinner-loading.component';
 import {MatPaginator} from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
 
 @Component({
   selector: 'app-subjects-list',
@@ -16,6 +18,8 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export class SubjectsListComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   private loadingSpinnerRef: MatDialogRef<SpinnerLoadingComponent>|null = null;
   private subjects: Subject[] = [];
   displayedColumns: string[] = ['_id', 'count', 'rename', 'delete'];
@@ -43,6 +47,7 @@ export class SubjectsListComponent implements OnInit, AfterViewInit  {
         this.subjects = (<Subject[]>data.result);
         this.dataSource.data.push(...this.subjects);
         this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error => {
         this.loadingSpinnerRef!.close();
@@ -51,8 +56,23 @@ export class SubjectsListComponent implements OnInit, AfterViewInit  {
     )
   }
 
-  public renameSubject(subjectName: string): void {
+  renameSubject(subjectName: string): void {
     alert(subjectName);
   }
 
+  deleteSubject(subjectName: string): void {
+    this.matdialog.open(GenericDialogComponent, {
+      data: {
+        "icon": "warning",
+        "title": "Deleting subject",
+        "desc": `Do you really want to delete '${subjectName}'?`,
+        "isYesNo": true
+      },
+      disableClose: true
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.endpoint.
+      }
+    });
+  }
 }
