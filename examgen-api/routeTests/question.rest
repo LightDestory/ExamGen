@@ -1,17 +1,17 @@
 ### Question All List ###
-GET localhost:5000/api/question
+GET  http://localhost:5000/api/question
 Authorization: capybara
 ### Question Content List ###
-GET localhost:5000/api/question/60fd8278b6d2cc0850b44985
+GET  http://localhost:5000/api/question/60fd8278b6d2cc0850b44985
 Authorization: capybara
 ### Question Creation ###
-POST localhost:5000/api/question/
+POST  http://localhost:5000/api/question/
 Authorization: capybara
 Content-Type: application/json
 
 {
-  "subject": "BackEnd",
-  "category": "JS",
+  "subject": "BackEnd5",
+  "category": "PHP8",
   "title": "Is TypeScript beautiful?",
   "optionalSubContent": "Be careful, there are more correct choices!",
   "answerTypology": "multi",
@@ -31,13 +31,13 @@ Content-Type: application/json
   ]
 }
 ### Question Edit ###
-PUT localhost:5000/api/question/60fd86cdf500e81bfced1e5e
+PUT  http://localhost:5000/api/question/60fd86cdf500e81bfced1e5e
 Authorization: capybara
 Content-Type: application/json
 
 {
   "subject": "BackEnd2",
-  "category": "Animals",
+  "category": "Gods",
   "title": "Is Capybara beautiful?",
   "optionalSubContent": "Be careful, there are more correct choices!",
   "answerTypology": "multi",
@@ -57,10 +57,10 @@ Content-Type: application/json
   ]
 }
 ### Question Delete ###
-DELETE localhost:5000/api/question/60fd8758f500e81bfced1e63
+DELETE  http://localhost:5000/api/question/60fd8758f500e81bfced1e63
 Authorization: capybara
 ###
 ### All Question Delete ###
-DELETE localhost:5000/api/question/all
+DELETE  http://localhost:5000/api/question/all
 Authorization: capybara
 ###

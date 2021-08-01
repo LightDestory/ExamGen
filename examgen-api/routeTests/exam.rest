@@ -1,15 +1,15 @@
 ## GET all EXAMS
-GET localhost:5000/api/exam/history
+GET  http://localhost:5000/api/exam/history
 Authorization: capybara
 #############
 
 ## GET a specific exam
-GET localhost:5000/api/exam/60ef232f9240b81c5889d685
+GET  http://localhost:5000/api/exam/60ef232f9240b81c5889d685
 Authorization: capybara
 #############
 
 
-POST localhost:5000/api/exam/generate
+POST  http://localhost:5000/api/exam/generate
 Authorization: capybara
 Content-Type: application/json
 
@@ -30,5 +30,5 @@ Content-Type: application/json
   ]
 }
 ####################
-DELETE localhost:5000/api/exam/all
+DELETE  http://localhost:5000/api/exam/all
 Authorization: capybara
