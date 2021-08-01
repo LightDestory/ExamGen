@@ -21,12 +21,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   }
   
   .text-center {
-    text-align: center;
+    text-align: center !important;
   }
   
   .text-right {
-    text-align: right;
+    text-align: right !important;
   }
+
+  .text-left {
+    text-align: left !important;
+  }
+
   .mat-icon {
     vertical-align: middle;
   }
