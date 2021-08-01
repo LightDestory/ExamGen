@@ -15,7 +15,8 @@ import { HttpInterceptorService } from './interceptors/http/http-interceptor.ser
 import { AboutComponent } from './components/about/about.component';
 import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashboard-welcome.component';
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
-import { SpinnerLoadingComponent } from './components/dialogs/spinner-loading/spinner-loading.component';
+import { TextInputDialogComponent } from './components/dialogs/text-input-dialog/text-input-dialog.component';
+import { LoadingDialogComponent } from './components/dialogs/loading-dialog/loading-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +27,11 @@ import { SpinnerLoadingComponent } from './components/dialogs/spinner-loading/sp
     AboutComponent,
     DashboardWelcomeComponent,
     SubjectsListComponent,
-    SpinnerLoadingComponent
+    LoadingDialogComponent,
+    TextInputDialogComponent,
+    LoadingDialogComponent
   ],
-  entryComponents: [GenericDialogComponent, SpinnerLoadingComponent],
+  entryComponents: [GenericDialogComponent, LoadingDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

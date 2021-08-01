@@ -10,6 +10,7 @@ import { EndpointSharedService } from '../shared/endpoint-shared.service';
 export class EndpointSubjectsService {
 
   private getAllRoutePath: string = "api/subject";
+  private paramRoutePath: string = "api/subject/:param";
   private deleteAllRoutePath: string = "api/question/all";
 
   constructor(private http: HttpClient,
@@ -22,5 +23,13 @@ export class EndpointSubjectsService {
 
   deleteAllSubjects(): Observable<endpointResponse> {
     return this.http.delete<endpointResponse>(this.helper.getAPIRoute(this.deleteAllRoutePath));
+  }
+
+  deleteSubject(subjectName: string): Observable<endpointResponse> {
+    return this.http.delete<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":param", subjectName)));
+  }
+
+  renameSubject(subjectName: string, newName: string): Observable<endpointResponse> {
+    return this.http.put<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":param", subjectName)), { "name": newName });
   }
 }

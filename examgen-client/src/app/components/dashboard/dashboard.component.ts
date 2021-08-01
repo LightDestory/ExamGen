@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
 import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
-import { SpinnerLoadingComponent } from '../dialogs/spinner-loading/spinner-loading.component';
 import { deletionResult } from 'src/app/models/deletionResult';
+import { LoadingDialogComponent } from '../dialogs/loading-dialog/loading-dialog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +19,7 @@ import { deletionResult } from 'src/app/models/deletionResult';
 export class DashboardComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  loadingSpinnerRef: MatDialogRef<SpinnerLoadingComponent> | null = null;
+  loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
 
   constructor(
     private observer: BreakpointObserver,
@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
               data: {
                 "icon": "check",
                 "title": "Subjects deleted",
-                "desc": `${(<deletionResult>data.result).deletions} subjects has been deleted!`,
+                "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
                 "isYesNo": false
               }
             }).afterClosed().subscribe(() => this.router.navigate(['dashboard']));

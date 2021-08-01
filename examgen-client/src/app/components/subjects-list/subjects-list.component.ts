@@ -4,11 +4,12 @@ import { Title } from '@angular/platform-browser';
 import { Subject } from 'src/app/models/subject';
 import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
 import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
-import { SpinnerLoadingComponent } from '../dialogs/spinner-loading/spinner-loading.component';
-import {MatPaginator} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
+import { deletionResult } from 'src/app/models/deletionResult';
+import { LoadingDialogComponent } from '../dialogs/loading-dialog/loading-dialog.component';
 
 @Component({
   selector: 'app-subjects-list',
@@ -16,11 +17,11 @@ import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog
   styleUrls: ['./subjects-list.component.scss']
 })
 
-export class SubjectsListComponent implements OnInit, AfterViewInit  {
+export class SubjectsListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  private loadingSpinnerRef: MatDialogRef<SpinnerLoadingComponent>|null = null;
+  private loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
   private subjects: Subject[] = [];
   displayedColumns: string[] = ['_id', 'count', 'rename', 'delete'];
   dataSource: MatTableDataSource<Subject> = new MatTableDataSource<Subject>();
@@ -29,7 +30,7 @@ export class SubjectsListComponent implements OnInit, AfterViewInit  {
     private pageTitle: Title,
     private endpoint: EndpointSubjectsService,
     private matdialog: MatDialog,
-    private helper: EndpointSharedService) {}
+    private helper: EndpointSharedService) { }
 
   ngOnInit(): void {
     this.pageTitle.setTitle("ExamGen - Subjects Listing");
@@ -71,7 +72,26 @@ export class SubjectsListComponent implements OnInit, AfterViewInit  {
       disableClose: true
     }).afterClosed().subscribe((result) => {
       if (result) {
-        this.endpoint.
+        this.loadingSpinnerRef = this.helper.openLoadingDialog();
+        this.endpoint.deleteSubject(subjectName).subscribe(
+          data => {
+            this.loadingSpinnerRef?.close();
+            this.matdialog.open(GenericDialogComponent, {
+              disableClose: true,
+              data: {
+                "icon": "check",
+                "title": "Subjects deleted",
+                "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
+                "isYesNo": false
+              }
+            }).afterClosed().subscribe(() => {
+              this.dataSource.data = this.dataSource.data.filter(sub => sub._id !== subjectName);
+            });
+          },
+          error => {
+            this.loadingSpinnerRef?.close();
+            this.helper.showServiceErrorDialog(error.status);
+          });
       }
     });
   }
