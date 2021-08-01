@@ -2,8 +2,11 @@ import {IQuestion, model as Questions} from "../models/Question";
 import {EnforceDocument, UpdateWriteOpResult} from "mongoose";
 
 function getAllCategories(subject: String): Promise<any[]> {
-    return Questions.find({"subject": subject})
-        .distinct("category").exec();
+    return Questions.aggregate([
+        { $match: {"subject": subject}},
+        {"$group" : {_id:"$category", count:{$sum:1}}}])
+        .exec();
+
 }
 
 function getCategoryContents(subject: String, category: String): Promise<EnforceDocument<IQuestion, {}>[]> {

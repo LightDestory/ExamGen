@@ -2,7 +2,7 @@ import {IQuestion, model as Questions} from "../models/Question";
 import {EnforceDocument, UpdateWriteOpResult} from "mongoose";
 
 function getAllSubjects(): Promise<any[]> {
-    return Questions.distinct("subject").exec();
+    return Questions.aggregate([{"$group" : {_id:"$subject", count:{$sum:1}}}]).exec();
 }
 
 function getSubjectContents(subject: String): Promise<EnforceDocument<IQuestion, {}>[]> {
