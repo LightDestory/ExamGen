@@ -9,65 +9,85 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z12">
         <mat-accordion>
-            <mat-expansion-panel (opened)="buttonsPanelToggle = true" (closed)="buttonsPanelToggle = false" [expanded]=true>
+
+            <mat-expansion-panel [expanded]="isExpanded('subjects')">
                 <mat-expansion-panel-header>
+
                     <mat-panel-title>
-                        <button mat-button class="menu-button">
-                            <mat-icon>stars</mat-icon>
-                            <span>Questions</span>
-                        </button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Subjects</span>
                     </mat-panel-title>
+
                 </mat-expansion-panel-header>
-                <button mat-button class="menu-button">
-                    <mat-icon>stars</mat-icon>
-                    <span>Questions</span>
-                </button>
-                <button mat-button class="menu-button">
-                    <mat-icon>stars</mat-icon>
-                    <span>Questions</span>
-                </button>
-                <button mat-button class="menu-button">
-                    <mat-icon>stars</mat-icon>
-                    <span>Questions</span>
-                </button>
+
+                <ng-template matExpansionPanelContent>
+                    <button class="submenu-button" mat-button [routerLinkActive]="['active-link']" [routerLink]="['subjects']">
+                        <mat-icon>arrow_right</mat-icon>
+                        <span>Subjects List</span>
+                    </button>
+                    <button class="submenu-button" mat-button color="warn" (click)="deleteAllSubjectsOnClick()">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete All</span>
+                    </button>
+                </ng-template>
             </mat-expansion-panel>
 
-            <mat-expansion-panel (opened)="buttonsPanelToggle = true" (closed)="buttonsPanelToggle = false">
+            <mat-expansion-panel [expanded]="isExpanded('questions')">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
-                        <button mat-button class="menu-button">
-                            <mat-icon>assignment</mat-icon>
-                            <span>Exams</span>
-                        </button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <button mat-button class="menu-button">
-                    <mat-icon>stars</mat-icon>
-                    <span>Questions</span>
-                </button>
-                <button mat-button class="menu-button">
-                    <mat-icon>stars</mat-icon>
-                    <span>Questions</span>
-                </button>
-                <button mat-button class="menu-button">
-                    <mat-icon>stars</mat-icon>
-                    <span>Questions</span>
-                </button>
-                <button mat-button class="menu-button" [routerLinkActive]="['active-link']" [routerLink]="['about']">
-                    <mat-icon>info</mat-icon>
-                    <span>About</span>
-                </button>
+                <ng-template matExpansionPanelContent>
+                    <button mat-button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
+                    </button>
+                    <button mat-button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
+                    </button>
+                    <button mat-button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
+                    </button>
+                </ng-template>
             </mat-expansion-panel>
+
+            <mat-expansion-panel [expanded]="isExpanded('exams')">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon>assignment</mat-icon>
+                        <span>Exams</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <button mat-button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
+                    </button>
+                    <button mat-button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
+                    </button>
+                    <button mat-button>
+                        <mat-icon>stars</mat-icon>
+                        <span>Questions</span>
+                    </button>
+                </ng-template>
+            </mat-expansion-panel>
+
         </mat-accordion>
 
         <mat-divider></mat-divider>
 
-        <button mat-button class="menu-button" [routerLinkActive]="['active-link']" [routerLink]="['about']">
+        <button mat-button class="text-left full-width" [routerLinkActive]="['active-link']" [routerLink]="['about']">
             <mat-icon>info</mat-icon>
             <span>About</span>
         </button>
 
-        <button mat-button class="menu-button" (click)="logoutOnClick()">
+        <button mat-button class="text-left full-width" (click)="logoutOnClick()">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
         </button>

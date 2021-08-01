@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
+import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashboard-welcome.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
@@ -22,9 +24,24 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
+        path:'',
+        component:DashboardWelcomeComponent
+      },
+      {
+        path: 'subjects',
+        component: SubjectsListComponent
+      },
+      {
+        path: 'questions',
+        component: AboutComponent
+      },
+      {
+        path: 'exams',
+        component: AboutComponent
+      },
+      {
         path: 'about',
         component: AboutComponent
-
       }
     ]
   },

@@ -1,9 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
 import { AuthStoreService } from 'src/app/services/vault/auth-store.service';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
+import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
+import { SpinnerLoadingComponent } from '../dialogs/spinner-loading/spinner-loading.component';
+import { deletionResult } from 'src/app/models/deletionResult';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,15 +19,19 @@ import { AuthStoreService } from 'src/app/services/vault/auth-store.service';
 export class DashboardComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  buttonsPanelToggle: boolean = true;
-
+  loadingSpinnerRef: MatDialogRef<SpinnerLoadingComponent> | null = null;
 
   constructor(
     private observer: BreakpointObserver,
     private matdialog: MatDialog,
-    private authStore: AuthStoreService) {}
+    private pageTitle: Title,
+    private authStore: AuthStoreService,
+    private router: Router,
+    private endpointSubject: EndpointSubjectsService,
+    private helper: EndpointSharedService) { }
 
   ngOnInit(): void {
+    this.pageTitle.setTitle("ExamGen - Dashboard");
   }
 
   ngAfterViewInit() {
@@ -36,7 +46,41 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  logoutOnClick() {
+  deleteAllSubjectsOnClick(): void {
+    this.matdialog.open(GenericDialogComponent, {
+      data: {
+        "icon": "warning",
+        "title": "Deleting ALL subjects",
+        "desc": "Do you really want to delete all the subjects?",
+        "isYesNo": true
+      },
+      disableClose: true
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.loadingSpinnerRef = this.helper.openLoadingDialog();
+        this.endpointSubject.deleteAllSubjects().subscribe(
+          data => {
+            this.loadingSpinnerRef!.close();
+            this.matdialog.open(GenericDialogComponent, {
+              disableClose: true,
+              data: {
+                "icon": "check",
+                "title": "Subjects deleted",
+                "desc": `${(<deletionResult>data.result).deletions} subjects has been deleted!`,
+                "isYesNo": false
+              }
+            }).afterClosed().subscribe(() => this.router.navigate(['dashboard']));
+          },
+          error => {
+            this.loadingSpinnerRef!.close();
+            this.helper.showServiceErrorDialog(error.status);
+          }
+        )
+      }
+    });
+  }
+
+  logoutOnClick(): void {
     this.matdialog.open(GenericDialogComponent, {
       data: {
         "icon": "warning",
@@ -46,10 +90,13 @@ export class DashboardComponent implements OnInit {
       },
       disableClose: true
     }).afterClosed().subscribe((result) => {
-      if(result){
+      if (result) {
         this.authStore.performLogOut();
       }
     });
   }
 
+  isExpanded(menuName: string): boolean {
+    return this.router.url.indexOf(menuName) !== -1;
+  }
 }

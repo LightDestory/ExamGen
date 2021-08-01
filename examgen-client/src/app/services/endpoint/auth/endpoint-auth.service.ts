@@ -9,7 +9,7 @@ import { EndpointSharedService } from '../shared/endpoint-shared.service';
 })
 export class EndpointAuthService {
 
-  routePath: string = "api/ping";
+  private routePath: string = "api/ping";
 
   constructor(private http: HttpClient,
     private helper: EndpointSharedService) { }

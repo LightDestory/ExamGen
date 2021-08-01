@@ -14,29 +14,20 @@ mat-sidenav {
 }
 
 .content {
-    height: calc(100vh - 98px);
+    min-height: calc(100vh - 98px);
     border-radius: 10px;
     margin: 16px;
     margin-left: 16px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 2rem;
-    color: lightgray;
+    box-sizing: border-box;
+    padding: 16px;
 }
 
 mat-sidenav-container {
     height: calc(100vh - 65px);
 }
 
-.menu-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1rem;
+.submenu-button {
+    padding-left: 0;
 }
 mat-divider {
     margin-top: 16px;

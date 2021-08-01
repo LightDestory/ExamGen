@@ -13,6 +13,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GenericDialogComponent } from './components/dialogs/generic-dialog/generic-dialog.component';
 import { HttpInterceptorService } from './interceptors/http/http-interceptor.service';
 import { AboutComponent } from './components/about/about.component';
+import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashboard-welcome.component';
+import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
+import { SpinnerLoadingComponent } from './components/dialogs/spinner-loading/spinner-loading.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +23,12 @@ import { AboutComponent } from './components/about/about.component';
     LoginComponent,
     DashboardComponent,
     GenericDialogComponent,
-    AboutComponent
+    AboutComponent,
+    DashboardWelcomeComponent,
+    SubjectsListComponent,
+    SpinnerLoadingComponent
   ],
-  entryComponents: [GenericDialogComponent],
+  entryComponents: [GenericDialogComponent, SpinnerLoadingComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -64,17 +64,7 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          let title: string = error.status == 403 ? "Credentials Error" : "Service Error";
-          let desc: string = error.status == 403 ? "The entered key may be invalid or the entered endpoint is not the general one!" : "Unable to reach the specified endpoint!";
-          this.matdialog.open(GenericDialogComponent, {
-            data: {
-              "icon": "error",
-              "title": title,
-              "desc": desc,
-              "isYesNo": false
-            },
-            disableClose: true
-          });
+          this.helper.showServiceErrorDialog(error.status);
           this.loading = false;
         }
       );
