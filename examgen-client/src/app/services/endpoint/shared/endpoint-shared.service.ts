@@ -54,6 +54,6 @@ export class EndpointSharedService {
   }
 
   openLoadingDialog(): MatDialogRef<LoadingDialogComponent> {
-    return this.matdialog.open(LoadingDialogComponent, { disableClose: true })
+    return this.matdialog.open(LoadingDialogComponent)
   }
 }

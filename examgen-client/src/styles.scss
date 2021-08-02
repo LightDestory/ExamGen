@@ -18,10 +18,16 @@ body {
   margin-bottom: 10px;
 }
 
+.container-table {
+  overflow-y: auto;
+  width: 100%;
+}
 table {
   width: 100%;
 }
-
+table td {
+  width: 25%;
+}
 .mat-row .mat-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;

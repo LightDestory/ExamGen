@@ -1,1 +1,65 @@
-<p>categories-list works!</p>
+<h1 class="text-center">Categories Listing</h1>
+
+<div class="container">
+  <mat-form-field appearance="outline" fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon matSuffix>stars</mat-icon>
+    <mat-label>Select a Subject:</mat-label>
+    <mat-select #subjectSelector [disabled]="subjects.length == 0" (valueChange)="onSubjectChange(subjectSelector.value)">
+      <mat-option *ngFor="let sub of subjects" [value]="sub">
+        {{sub}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+<div class="mat-elevation-z8 container-table">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <!-- Subject's Name Column -->
+    <ng-container matColumnDef="_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+    </ng-container>
+
+    <!-- Count Column -->
+    <ng-container matColumnDef="count">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Count</th>
+      <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+
+    <!-- Rename Column -->
+    <ng-container matColumnDef="rename">
+      <th mat-header-cell *matHeaderCellDef class="text-center">
+        <mat-icon>edit</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element" class="text-center">
+        <button mat-raised-button color="primary"
+                (click)="renameCategory(element._id)">Rename
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef class="text-center">
+        <mat-icon>delete</mat-icon>
+      </th>
+      <td mat-cell *matCellDef="let element" class="text-center">
+        <button mat-raised-button color="warn"
+                (click)="deleteCategory(element._id)">Delete
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="dataSource?.data?.length"
+    [pageIndex]="0"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 15, 20]">
+  </mat-paginator>
+</div>

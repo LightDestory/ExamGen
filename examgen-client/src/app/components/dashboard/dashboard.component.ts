@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -6,17 +6,17 @@ import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog
 import { AuthStoreService } from 'src/app/services/vault/auth-store.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
 import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
 import { deletionResult } from 'src/app/models/deletionResult';
 import { LoadingDialogComponent } from '../dialogs/loading-dialog/loading-dialog.component';
+import {EndpointQuestionsService} from "../../services/endpoint/questions/endpoint-questions.service";
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit{
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
   loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
     private pageTitle: Title,
     private authStore: AuthStoreService,
     private router: Router,
-    private endpointSubject: EndpointSubjectsService,
+    private endpointQuestions: EndpointQuestionsService,
     private helper: EndpointSharedService) { }
 
   ngOnInit(): void {
@@ -48,17 +48,17 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  deleteAllSubjectsOnClick(): void {
+  deleteAllQuestions(): void {
     this.matdialog.open(GenericDialogComponent, {
       data: {
         "icon": "warning",
-        "title": "Deleting ALL subjects",
-        "desc": "Do you really want to delete all the subjects?",
+        "title": "Deleting ALL questions",
+        "desc": "Do you really want to delete all the questions?",
         "isYesNo": true
       }}).afterClosed().subscribe((result) => {
       if (result) {
         this.loadingSpinnerRef = this.helper.openLoadingDialog();
-        this.endpointSubject.deleteAllSubjects().subscribe(
+        this.endpointQuestions.deleteAllQuestions().subscribe(
           data => {
             this.loadingSpinnerRef!.close();
             this.matdialog.open(GenericDialogComponent, {

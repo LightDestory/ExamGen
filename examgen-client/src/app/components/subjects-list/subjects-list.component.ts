@@ -36,7 +36,6 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.pageTitle.setTitle("ExamGen - Subjects Listing");
-    this.loadingSpinnerRef = this.helper.openLoadingDialog();
   }
 
   ngAfterViewInit() {
@@ -44,6 +43,7 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
   }
 
   private getData(): void {
+    this.loadingSpinnerRef = this.helper.openLoadingDialog();
     this.endpoint.getAllSubjects().subscribe(
       data => {
         this.loadingSpinnerRef!.close();
@@ -74,7 +74,7 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
             this.matdialog.open(GenericDialogComponent, {
               data: {
                 "icon": "check",
-                "title": "Subjects renamed",
+                "title": "Subject renamed",
                 "desc": `${(<updateResult>data.result).updates} questions has been updated!`,
                 "isYesNo": false
               }
@@ -112,12 +112,13 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
             this.matdialog.open(GenericDialogComponent, {
               data: {
                 "icon": "check",
-                "title": "Subjects deleted",
+                "title": "Subject deleted",
                 "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
                 "isYesNo": false
               }
             }).afterClosed().subscribe(() => {
               this.dataSource.data = this.dataSource.data.filter(sub => sub._id !== subjectName);
+              this.dataSource._updateChangeSubscription();
             });
           },
           error => {
