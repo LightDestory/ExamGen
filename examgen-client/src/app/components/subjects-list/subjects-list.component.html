@@ -7,7 +7,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
         <td mat-cell *matCellDef="let element"> {{element._id}} </td>
       </ng-container>
-  
+
       <!-- Count Column -->
       <ng-container matColumnDef="count">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Count </th>
@@ -31,12 +31,12 @@
                     (click)="deleteSubject(element._id)">Delete</button>
         </td>
       </ng-container>
-  
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-  
-    <mat-paginator 
+
+    <mat-paginator
     [length]="dataSource?.data?.length"
     [pageIndex]="0"
     [pageSize]="10"

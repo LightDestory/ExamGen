@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
-import { Subject } from 'src/app/models/subject';
+import { SubjectNCategory } from 'src/app/models/sub_cat_model';
 import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
 import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
 import { MatPaginator } from '@angular/material/paginator';
@@ -24,9 +24,9 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   private loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
-  private subjects: Subject[] = [];
+  private subjects: SubjectNCategory[] = [];
   displayedColumns: string[] = ['_id', 'count', 'rename', 'delete'];
-  dataSource: MatTableDataSource<Subject> = new MatTableDataSource<Subject>();
+  dataSource: MatTableDataSource<SubjectNCategory> = new MatTableDataSource<SubjectNCategory>();
 
   constructor(
     private pageTitle: Title,
@@ -47,7 +47,7 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
     this.endpoint.getAllSubjects().subscribe(
       data => {
         this.loadingSpinnerRef!.close();
-        this.subjects = (<Subject[]>data.result);
+        this.subjects = (<SubjectNCategory[]>data.result);
         this.dataSource.data.push(...this.subjects);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

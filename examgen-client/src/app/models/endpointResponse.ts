@@ -1,9 +1,9 @@
 import { deletionResult } from "./deletionResult";
-import { Subject } from "./subject";
+import { SubjectNCategory } from "./sub_cat_model";
 import { updateResult } from "./updateResult";
 
 
 export interface endpointResponse {
     status: string;
-    result: string|deletionResult|updateResult|Subject[]|any[];
+    result: string|deletionResult|updateResult|SubjectNCategory[]|any[];
   }
