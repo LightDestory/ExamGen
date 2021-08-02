@@ -62,10 +62,10 @@ export class CategoriesListComponent implements OnInit, AfterViewInit {
     )
   }
 
-  onSubjectChange(subject: string): void {
+  onSubjectChange(): void {
     Promise.resolve(null).then(() => {
       this.loadingSpinnerRef = this.helper.openLoadingDialog();
-      this.categoryendpoint.getAllCategoriesFromSubject(subject).subscribe(
+      this.categoryendpoint.getAllCategoriesFromSubject(this.subjectSelector.value).subscribe(
         data => {
           this.loadingSpinnerRef!.close();
           this.dataSource.data = (<SubjectNCategory[]>data.result)

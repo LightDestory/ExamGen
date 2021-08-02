@@ -19,6 +19,7 @@ import { TextInputDialogComponent } from './components/dialogs/text-input-dialog
 import { LoadingDialogComponent } from './components/dialogs/loading-dialog/loading-dialog.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CategoriesListComponent } from './components/categories-list/categories
     LoadingDialogComponent,
     TextInputDialogComponent,
     LoadingDialogComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    QuestionsListComponent
   ],
   entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent],
   imports: [

@@ -59,22 +59,22 @@
       <mat-expansion-panel [expanded]="isExpanded('questions')">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <mat-icon>stars</mat-icon>
+            <mat-icon>topic</mat-icon>
             <span>Questions</span>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-          <button mat-button>
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
+          <button class="submenu-button" mat-button [routerLinkActive]="['active-link']" [routerLink]="['questions']">
+            <mat-icon>list</mat-icon>
+            <span>Questions List</span>
           </button>
-          <button mat-button>
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
+          <button class="submenu-button" mat-button>
+            <mat-icon>add</mat-icon>
+            <span>Add Question</span>
           </button>
-          <button mat-button>
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
+          <button class="submenu-button" mat-button color="warn" (click)="deleteAllQuestions()">
+            <mat-icon>delete</mat-icon>
+            <span>Delete All</span>
           </button>
         </ng-template>
       </mat-expansion-panel>

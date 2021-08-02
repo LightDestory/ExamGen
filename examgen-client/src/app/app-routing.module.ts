@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import {CategoriesListComponent} from "./components/categories-list/categories-list.component";
+import {QuestionsListComponent} from "./components/questions-list/questions-list.component";
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesListComponent
+      },
+      {
+        path: 'questions',
+        component: QuestionsListComponent
       },
       {
         path: 'exams',

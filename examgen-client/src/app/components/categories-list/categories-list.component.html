@@ -4,7 +4,7 @@
   <mat-form-field appearance="outline" fxLayout="row" fxLayoutAlign="center center">
     <mat-icon matSuffix>stars</mat-icon>
     <mat-label>Select a Subject:</mat-label>
-    <mat-select #subjectSelector [disabled]="subjects.length == 0" (valueChange)="onSubjectChange(subjectSelector.value)">
+    <mat-select #subjectSelector [disabled]="subjects.length == 0" (valueChange)="onSubjectChange()">
       <mat-option *ngFor="let sub of subjects" [value]="sub">
         {{sub}}
       </mat-option>

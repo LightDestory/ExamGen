@@ -9,11 +9,21 @@ import {endpointResponse} from "../../../models/endpointResponse";
 })
 export class EndpointQuestionsService {
 
+  private getAllRoutePath: string = "api/question";
+  private paramRoutePath: string = "api/question/:question";
   private deleteAllRoutePath: string = "api/question/all";
 
   constructor(private http: HttpClient,
               private helper: EndpointSharedService) { }
 
+
+  getAllQuestions(): Observable<endpointResponse> {
+    return this.http.get<endpointResponse>(this.helper.getAPIRoute(this.getAllRoutePath));
+  }
+
+  deleteQuestion(question: string): Observable<endpointResponse> {
+    return this.http.delete<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":question", question)));
+  }
 
   deleteAllQuestions(): Observable<endpointResponse> {
     return this.http.delete<endpointResponse>(this.helper.getAPIRoute(this.deleteAllRoutePath));
