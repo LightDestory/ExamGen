@@ -18,6 +18,7 @@ import { SubjectsListComponent } from './components/subjects-list/subjects-list.
 import { TextInputDialogComponent } from './components/dialogs/text-input-dialog/text-input-dialog.component';
 import { LoadingDialogComponent } from './components/dialogs/loading-dialog/loading-dialog.component';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
     SubjectsListComponent,
     LoadingDialogComponent,
     TextInputDialogComponent,
-    LoadingDialogComponent
+    LoadingDialogComponent,
+    CategoriesListComponent
   ],
   entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent],
   imports: [

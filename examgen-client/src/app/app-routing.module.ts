@@ -6,6 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
 import { AuthGuard } from './guards/auth/auth.guard';
+import {CategoriesListComponent} from "./components/categories-list/categories-list.component";
 
 const routes: Routes = [
   {
@@ -32,8 +33,8 @@ const routes: Routes = [
         component: SubjectsListComponent
       },
       {
-        path: 'questions',
-        component: AboutComponent
+        path: 'categories',
+        component: CategoriesListComponent
       },
       {
         path: 'exams',

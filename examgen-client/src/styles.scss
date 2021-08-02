@@ -1,43 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
-@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .full-width {
-    width: 100%;
-  }
-  
-  .container {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .spinner {
-    left: 49%;
-    position: fixed !important;
-    top: 15%;
-    z-index: 9999;
-  }
-  
-  .text-center {
-    text-align: center !important;
-  }
-  
-  .text-right {
-    text-align: right !important;
-  }
+  width: 100%;
+}
 
-  .text-left {
-    text-align: left !important;
-  }
+.container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  .mat-icon {
-    vertical-align: middle;
-  }
-  
-  .fixed-fab {
-    position: fixed !important;
-    right: 2%;
-    bottom: 3%;
-  }
+table {
+  width: 100%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: #673ab7;
+}
+
+th.mat-sort-header-sorted {
+  color: #673ab7;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+.fixed-fab {
+  position: fixed !important;
+  right: 2%;
+  bottom: 3%;
+}

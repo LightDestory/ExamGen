@@ -16,7 +16,7 @@ import { updateResult } from 'src/app/models/updateResult';
 @Component({
   selector: 'app-subjects-list',
   templateUrl: './subjects-list.component.html',
-  styleUrls: ['./subjects-list.component.scss']
+  styleUrls: []
 })
 
 export class SubjectsListComponent implements OnInit, AfterViewInit {

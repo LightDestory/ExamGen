@@ -1,36 +1,36 @@
 mat-sidenav {
-    margin: 16px 16px 16px 0;
-    width: 200px;
-    border-right: none;
-    background: #673ab7;
-    color: white;
-    border-radius: 0 10px 10px 0;
-    padding: 16px;
-    text-align: center;
+  margin: 16px 16px 16px 0;
+  width: 200px;
+  border-right: none;
+  background: #673ab7;
+  color: white;
+  border-radius: 0 10px 10px 0;
+  padding: 16px;
+  text-align: center;
 }
 
 .active-link, button:hover {
-    color: #ffd740;
+  color: #ffd740;
 }
 
 .content {
-    min-height: calc(100vh - 98px);
-    border-radius: 10px;
-    margin: 16px;
-    margin-left: 16px;
-    box-sizing: border-box;
-    padding: 16px;
+  min-height: calc(100vh - 98px);
+  border-radius: 10px;
+  margin: 16px;
+  box-sizing: border-box;
+  padding: 16px;
 }
 
 mat-sidenav-container {
-    height: calc(100vh - 65px);
+  min-height: calc(100vh - 65px);
 }
 
 .submenu-button {
-    padding-left: 0;
+  padding-left: 0;
 }
+
 mat-divider {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 16px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
