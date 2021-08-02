@@ -33,7 +33,7 @@
   * [List all Categories of a Subject](#1-list-all-categories-of-a-subject)
   * [List Questions by Subject and Category](#2-list-questions-by-subject-and-category)
   * [Rename Subject's Category](#3-rename-subject's-category)
-  * [Delete Subject](#4-delete-subject-1)
+  * [Delete Category](#4-delete-category)
 
 * [Exams](#exams)
 
@@ -1635,7 +1635,7 @@ URL: localhost:5000/api/subject/:SubjectName/category/:CategoryName
 
 
 
-### 4. Delete Subject
+### 4. Delete Category
 
 
 
