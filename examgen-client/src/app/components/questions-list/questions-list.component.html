@@ -11,7 +11,7 @@
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-icon matSuffix>category</mat-icon>
-    <mat-label>Select a Category:</mat-label>
+    <mat-label>Select a Category</mat-label>
     <mat-select #categorySelector [disabled]="subjectSelector.value == undefined"
                 (selectionChange)="onCategoryChange()">
       <mat-option value="All">All</mat-option>

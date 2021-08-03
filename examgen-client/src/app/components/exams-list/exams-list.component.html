@@ -2,7 +2,7 @@
 <div class="container">
   <mat-form-field appearance="outline" fxLayout="row" fxLayoutAlign="center center">
     <mat-icon matSuffix>stars</mat-icon>
-    <mat-label>Select a Subject:</mat-label>
+    <mat-label>Select a Subject</mat-label>
     <mat-select [disabled]="subjects.length == 0" (selectionChange)="onSubjectChange()">
       <mat-option *ngFor="let sub of subjects" [value]="sub">
         {{sub}}

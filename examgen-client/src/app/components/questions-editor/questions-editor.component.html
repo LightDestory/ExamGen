@@ -1,8 +1,6 @@
 <h1 class="text-center">Question {{questionID !== null ? "Editing" : "Creation"}}</h1>
-
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <form [formGroup]="questionForm" fxFlex="90%">
-
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>stars</mat-icon>
       <mat-label>Enter the question's Subject</mat-label>
@@ -11,7 +9,6 @@
         A subject is <strong>required</strong> to proceed!
       </mat-error>
     </mat-form-field>
-
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>category</mat-icon>
       <mat-label>Enter the question's Category</mat-label>
@@ -20,7 +17,6 @@
         A category is <strong>required</strong> to proceed!
       </mat-error>
     </mat-form-field>
-
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>title</mat-icon>
       <mat-label>Enter the question's Title</mat-label>
@@ -29,13 +25,11 @@
         A title is <strong>required</strong> to proceed!
       </mat-error>
     </mat-form-field>
-
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>title</mat-icon>
       <mat-label>Enter the question's optional subtitle</mat-label>
       <input matInput formControlName="subtitle" type="text">
     </mat-form-field>
-
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>playlist_add_check</mat-icon>
       <mat-label>Select a Typology</mat-label>
@@ -47,7 +41,6 @@
         A typology is <strong>required</strong> to proceed!
       </mat-error>
     </mat-form-field>
-
     <div [hidden]="typeSelector.value !== 'multi'">
       <mat-form-field class="full-width" appearance="outline">
         <mat-icon matSuffix>text_snippet</mat-icon>
@@ -82,7 +75,6 @@
         </mat-error>
       </mat-form-field>
     </div>
-
     <button mat-raised-button color="primary" [disabled]="questionForm.invalid" (click)="execute()"
     >{{questionID !== null ? "Edit" : "Create"}}</button>
   </form>

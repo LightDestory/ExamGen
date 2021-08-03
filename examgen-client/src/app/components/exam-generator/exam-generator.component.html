@@ -1,1 +1,61 @@
-<p>exam-generator works!</p>
+<h1 class="text-center">Exam Generating</h1>
+<div class="container" fxLayout="row wrap" fxLayoutAlign="center center">
+  <mat-form-field appearance="outline">
+    <mat-icon matSuffix>stars</mat-icon>
+    <mat-label>Select a Subject</mat-label>
+    <mat-select #subjectSelector [disabled]="subjects.length == 0" (selectionChange)="onSubjectChange()">
+      <mat-option *ngFor="let sub of subjects" [value]="sub">
+        {{sub}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<ul [hidden]="subjectSelector.value == undefined">
+  <li><i>Question Quantity</i> indicates the number of questions that will be inserted into the exam paper.</li>
+  <li>Setting <i>Fixed Multi Answer Quantity</i> to <b>-1</b> will generate a random mix of questions of the related
+    category.
+  </li>
+  <li>Setting <i>Fixed Multi Answer Quantity</i> to <b>a non-negative number</b> will generate a exam with that exact
+    number of multi answer questions and the rest of open questions
+  </li>
+  <li>Obviously <i>Fixed Multi Answer Quantity</i> can't be higher than <i>Question Quantity</i>
+  </li>
+</ul>
+<div class="container" fxLayout="row" fxLayoutAlign="center center" [style.visibility]="subjectSelector.value == undefined ? 'hidden': 'visible'">
+  <form [formGroup]="examForm" fxFlex="90%">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-icon matSuffix>title</mat-icon>
+      <mat-label>Enter the exam's title</mat-label>
+      <input matInput formControlName="title" type="text">
+      <mat-error *ngIf="examForm.controls['title'].hasError('required')">
+        A title is <strong>required</strong> to proceed!
+      </mat-error>
+    </mat-form-field>
+    <ng-container *ngFor="let cat of subject_categories">
+      <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+          <mat-icon matSuffix>category</mat-icon>
+          <mat-label>Category</mat-label>
+          <input matInput [value]="cat" readonly type="text">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Question Quantity</mat-label>
+          <input matInput min="0" type="number" [formControlName]="cat+'overall'">
+          <mat-error *ngIf="examForm.controls[cat+'overall'].hasError('required')">
+            The answer's text is <strong>required</strong> to proceed!
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Fixed Multi Answer Quantity</mat-label>
+          <input matInput min="-1" type="number" [formControlName]="cat+'multi'">
+          <mat-error *ngIf="examForm.controls[cat+'multi'].hasError('required')">
+            The answer's text is <strong>required</strong> to proceed!
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </ng-container>
+    <button mat-raised-button color="primary"
+            [disabled]="examForm.invalid" (click)="generate()">Generate
+    </button>
+  </form>
+</div>

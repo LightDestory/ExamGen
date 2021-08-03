@@ -3,14 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {EndpointSharedService} from "../shared/endpoint-shared.service";
 import {Observable} from "rxjs";
 import {endpointResponse} from "../../../models/endpointResponse";
-import {Question} from "../../../models/question";
+import {ExamRequest} from "../../../models/examRequest";
 
 @Injectable({
   providedIn: 'root'
 })
 export class EndpointExamsService {
 
-  private genericRoutePath: string = "api/exam";
+  private generateRoutePath: string = "api/exam/generate";
   private historyRoutePath: string = "api/exam/history";
   private paramRoutePath: string = "api/exam/:exam";
   private downloadRoutePath: string = "api/exam/:exam/file";
@@ -28,6 +28,13 @@ export class EndpointExamsService {
   getExamFile(id: string): Observable<Blob> {
     return this.http.get<Blob>(this.helper.getAPIRoute(this.downloadRoutePath.replace(":exam", id)), {
       headers: {'Accept': 'application/pdf'},
+      responseType: 'blob' as 'json'
+    });
+  }
+
+  generateExam(exam: ExamRequest): Observable<Blob> {
+    return this.http.post<Blob>(this.helper.getAPIRoute(this.generateRoutePath), JSON.stringify(exam), {
+      headers: {'Accept': 'application/pdf', 'Content-Type': 'application/json'},
       responseType: 'blob' as 'json'
     });
   }
