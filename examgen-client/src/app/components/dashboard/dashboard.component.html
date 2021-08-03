@@ -26,7 +26,7 @@
             <mat-icon>add</mat-icon>
             <span>Add Subject</span>
           </button>
-          <button class="submenu-button" mat-button color="warn" (click)="deleteAllQuestions()">
+          <button class="submenu-button" mat-button color="warn" (click)="deleteAll('questions')">
             <mat-icon>delete</mat-icon>
             <span>Delete All</span>
           </button>
@@ -49,7 +49,7 @@
             <mat-icon>add</mat-icon>
             <span>Add Category</span>
           </button>
-          <button class="submenu-button" mat-button color="warn" (click)="deleteAllQuestions()">
+          <button class="submenu-button" mat-button color="warn" (click)="deleteAll('questions')">
             <mat-icon>delete</mat-icon>
             <span>Delete All</span>
           </button>
@@ -72,7 +72,7 @@
             <mat-icon>add</mat-icon>
             <span>Add Question</span>
           </button>
-          <button class="submenu-button" mat-button color="warn" (click)="deleteAllQuestions()">
+          <button class="submenu-button" mat-button color="warn" (click)="deleteAll('questions')">
             <mat-icon>delete</mat-icon>
             <span>Delete All</span>
           </button>
@@ -87,17 +87,17 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <ng-template matExpansionPanelContent>
-          <button mat-button>
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
+          <button class="submenu-button" mat-button [routerLinkActive]="['active-link']" [routerLink]="['exams']">
+            <mat-icon>list</mat-icon>
+            <span>Past Exams</span>
           </button>
-          <button mat-button>
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
+          <button class="submenu-button" mat-button [routerLink]="['generate']">
+            <mat-icon>add</mat-icon>
+            <span>Generate Exam</span>
           </button>
-          <button mat-button>
-            <mat-icon>stars</mat-icon>
-            <span>Questions</span>
+          <button class="submenu-button" mat-button color="warn" (click)="deleteAll('exams')">
+            <mat-icon>delete</mat-icon>
+            <span>Delete All</span>
           </button>
         </ng-template>
       </mat-expansion-panel>

@@ -9,6 +9,8 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import {CategoriesListComponent} from "./components/categories-list/categories-list.component";
 import {QuestionsListComponent} from "./components/questions-list/questions-list.component";
 import {QuestionsEditorComponent} from "./components/questions-editor/questions-editor.component";
+import {ExamsListComponent} from "./components/exams-list/exams-list.component";
+import {ExamGeneratorComponent} from "./components/exam-generator/exam-generator.component";
 
 const routes: Routes = [
   {
@@ -53,7 +55,11 @@ const routes: Routes = [
       },
       {
         path: 'exams',
-        component: AboutComponent
+        component: ExamsListComponent
+      },
+      {
+        path: 'generate',
+        component: ExamGeneratorComponent
       },
       {
         path: 'about',

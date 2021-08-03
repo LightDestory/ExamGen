@@ -10,6 +10,9 @@ import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint
 import { deletionResult } from 'src/app/models/deletionResult';
 import { LoadingDialogComponent } from '../dialogs/loading-dialog/loading-dialog.component';
 import {EndpointQuestionsService} from "../../services/endpoint/questions/endpoint-questions.service";
+import {Observable} from "rxjs";
+import {endpointResponse} from "../../models/endpointResponse";
+import {EndpointExamsService} from "../../services/endpoint/exams/endpoint-exams.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +31,7 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     private authStore: AuthStoreService,
     private router: Router,
     private endpointQuestions: EndpointQuestionsService,
+    private endpointExams: EndpointExamsService,
     private helper: EndpointSharedService) { }
 
   ngOnInit(): void {
@@ -48,24 +52,25 @@ export class DashboardComponent implements OnInit, AfterViewInit{
     });
   }
 
-  deleteAllQuestions(): void {
+  deleteAll(entity: string): void {
     this.matdialog.open(GenericDialogComponent, {
       data: {
         "icon": "warning",
-        "title": "Deleting ALL questions",
-        "desc": "Do you really want to delete all the questions?",
+        "title": `Deleting ALL ${entity}`,
+        "desc": `Do you really want to delete all the ${entity}?`,
         "isYesNo": true
       }}).afterClosed().subscribe((result) => {
       if (result) {
         this.loadingSpinnerRef = this.helper.openLoadingDialog();
-        this.endpointQuestions.deleteAllQuestions().subscribe(
+        let endpointCall: Observable<endpointResponse> = entity == "questions" ? this.endpointQuestions.deleteAllQuestions() : this.endpointExams.deleteAllPastExams()
+        endpointCall.subscribe(
           data => {
             this.loadingSpinnerRef!.close();
             this.matdialog.open(GenericDialogComponent, {
               data: {
                 "icon": "check",
-                "title": "Subjects deleted",
-                "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
+                "title": "Entries deleted",
+                "desc": `${(<deletionResult>data.result).deletions} ${entity} has been deleted!`,
                 "isYesNo": false
               }}).afterClosed().subscribe(() => this.router.navigate(['dashboard']));
           },

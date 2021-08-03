@@ -22,6 +22,8 @@ import { CategoriesListComponent } from './components/categories-list/categories
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 import { QuestionViewDialogComponent } from './components/dialogs/question-view-dialog/question-view-dialog.component';
 import { QuestionsEditorComponent } from './components/questions-editor/questions-editor.component';
+import { ExamsListComponent } from './components/exams-list/exams-list.component';
+import { ExamGeneratorComponent } from './components/exam-generator/exam-generator.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { QuestionsEditorComponent } from './components/questions-editor/question
     CategoriesListComponent,
     QuestionsListComponent,
     QuestionViewDialogComponent,
-    QuestionsEditorComponent
+    QuestionsEditorComponent,
+    ExamsListComponent,
+    ExamGeneratorComponent
   ],
   entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent, QuestionViewDialogComponent],
   imports: [
