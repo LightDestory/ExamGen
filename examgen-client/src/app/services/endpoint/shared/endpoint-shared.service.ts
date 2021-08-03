@@ -23,7 +23,7 @@ export class EndpointSharedService {
     return url[url.length - 1] == '/' ? url : `${url}/`;
   }
 
-  showServiceErrorDialog(errorCode: number) {
+  showServiceErrorDialog(errorCode: number): MatDialogRef<GenericDialogComponent> {
     let title: string = "";
     let desc: string = "";
     switch (errorCode) {
@@ -53,7 +53,7 @@ export class EndpointSharedService {
         desc = "Unable to reach the specified endpoint!"
         break;
     }
-    this.matdialog.open(GenericDialogComponent, {
+    return this.matdialog.open(GenericDialogComponent, {
       data: {
         "icon": "error",
         "title": title,

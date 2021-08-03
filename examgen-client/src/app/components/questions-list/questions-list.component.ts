@@ -83,14 +83,9 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  async getQuestionDetails(id: string): Promise<endpointResponse> {
-    return await this.questionendpoint.getQuestionDetails(id).toPromise();
-  }
-
   viewQuestion(id: string): void {
     this.loadingSpinnerRef = this.helper.openLoadingDialog();
-    this.getQuestionDetails(id)
-      .then(
+    this.questionendpoint.getQuestionDetails(id).subscribe(
         data => {
           this.loadingSpinnerRef!.close();
           this.matdialog.open(QuestionViewDialogComponent, {
@@ -99,52 +94,14 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
               payload: <Question>data.result
             }
           });
-        }
-      )
-      .catch(
-        error => {
+        },
+      error => {
           this.loadingSpinnerRef!.close();
           this.helper.showServiceErrorDialog(error.status);
         }
-      )
+      );
   }
 
-  /*renameCategory(categoryName: string): void {
-    this.matdialog.open(TextInputDialogComponent, {
-      data: {
-        "icon": "warning",
-        "name": categoryName
-      }
-    }).afterClosed().subscribe(result => {
-      if (result) {
-        this.loadingSpinnerRef = this.helper.openLoadingDialog();
-        this.categoryendpoint.renameCategoryFromSubject(this.subjectSelector.value, categoryName, result).subscribe(
-          data => {
-            this.loadingSpinnerRef?.close();
-            this.matdialog.open(GenericDialogComponent, {
-              data: {
-                "icon": "check",
-                "title": "Category renamed",
-                "desc": `${(<updateResult>data.result).updates} questions has been updated!`,
-                "isYesNo": false
-              }
-            }).afterClosed().subscribe(() => {
-              this.dataSource.data.forEach(sub =>{
-                if( sub._id == categoryName){
-                  sub._id = result;
-                }
-              });
-            });
-          },
-          error => {
-            this.loadingSpinnerRef?.close();
-            this.helper.showServiceErrorDialog(error.status);
-          }
-        )
-      }
-    })
-  }
-  */
   deleteQuestion(title: string, id: string): void {
     this.matdialog.open(GenericDialogComponent, {
       data: {

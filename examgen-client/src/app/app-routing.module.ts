@@ -8,6 +8,7 @@ import { SubjectsListComponent } from './components/subjects-list/subjects-list.
 import { AuthGuard } from './guards/auth/auth.guard';
 import {CategoriesListComponent} from "./components/categories-list/categories-list.component";
 import {QuestionsListComponent} from "./components/questions-list/questions-list.component";
+import {QuestionsEditorComponent} from "./components/questions-editor/questions-editor.component";
 
 const routes: Routes = [
   {
@@ -39,7 +40,16 @@ const routes: Routes = [
       },
       {
         path: 'questions',
-        component: QuestionsListComponent
+        component: QuestionsListComponent,
+      },
+      {
+        path: 'editor',
+        component: QuestionsEditorComponent,
+      },
+      {
+        path: 'editor/:id',
+        component: QuestionsEditorComponent,
+        pathMatch: 'full'
       },
       {
         path: 'exams',

@@ -1,1 +1,89 @@
-<p>questions-editor works!</p>
+<h1 class="text-center">Question {{questionID !== null ? "Editing" : "Creation"}}</h1>
+
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <form [formGroup]="questionForm" fxFlex="90%">
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-icon matSuffix>stars</mat-icon>
+      <mat-label>Enter the question's Subject</mat-label>
+      <input matInput formControlName="subject" type="text">
+      <mat-error *ngIf="questionForm.controls['subject'].hasError('required')">
+        A subject is <strong>required</strong> to proceed!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-icon matSuffix>category</mat-icon>
+      <mat-label>Enter the question's Category</mat-label>
+      <input matInput formControlName="category" type="text">
+      <mat-error *ngIf="questionForm.controls['category'].hasError('required')">
+        A category is <strong>required</strong> to proceed!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-icon matSuffix>title</mat-icon>
+      <mat-label>Enter the question's Title</mat-label>
+      <input matInput formControlName="title" type="text">
+      <mat-error *ngIf="questionForm.controls['title'].hasError('required')">
+        A title is <strong>required</strong> to proceed!
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-icon matSuffix>title</mat-icon>
+      <mat-label>Enter the question's optional subtitle</mat-label>
+      <input matInput formControlName="subtitle" type="text">
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-icon matSuffix>playlist_add_check</mat-icon>
+      <mat-label>Select a Typology</mat-label>
+      <mat-select #typeSelector formControlName="type" (selectionChange)="refreshValidators()">
+        <mat-option value="text">Open Answer</mat-option>
+        <mat-option value="multi">Multi Answer</mat-option>
+      </mat-select>
+      <mat-error *ngIf="questionForm.controls['type'].hasError('required')">
+        A typology is <strong>required</strong> to proceed!
+      </mat-error>
+    </mat-form-field>
+
+    <div [hidden]="typeSelector.value !== 'multi'">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-icon matSuffix>text_snippet</mat-icon>
+        <mat-label>Enter the 1# answer's text</mat-label>
+        <input matInput formControlName="answer1" type="text">
+        <mat-error *ngIf="questionForm.controls['answer1'].hasError('required')">
+          The answer's text is <strong>required</strong> to proceed!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-icon matSuffix>text_snippet</mat-icon>
+        <mat-label>Enter the 2# answer's text</mat-label>
+        <input matInput formControlName="answer2" type="text">
+        <mat-error *ngIf="questionForm.controls['answer2'].hasError('required')">
+          The answer's text is <strong>required</strong> to proceed!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-icon matSuffix>text_snippet</mat-icon>
+        <mat-label>Enter the 3# answer's text</mat-label>
+        <input matInput formControlName="answer3" type="text">
+        <mat-error *ngIf="questionForm.controls['answer3'].hasError('required')">
+          The answer's text is <strong>required</strong> to proceed!
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-icon matSuffix>text_snippet</mat-icon>
+        <mat-label>Enter the 4# answer's text</mat-label>
+        <input matInput formControlName="answer4" type="text">
+        <mat-error *ngIf="questionForm.controls['answer4'].hasError('required')">
+          The answer's text is <strong>required</strong> to proceed!
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" [disabled]="questionForm.invalid" (click)="execute()"
+    >{{questionID !== null ? "Edit" : "Create"}}</button>
+  </form>
+</div>
