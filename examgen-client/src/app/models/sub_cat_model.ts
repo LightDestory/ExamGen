@@ -1,4 +1,4 @@
 export interface SubjectNCategory {
-    _id: string;
-    count: string|number;
-  }
+  _id: string;
+  count: string | number;
+}

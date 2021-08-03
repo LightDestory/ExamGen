@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { EndpointCategoriesService } from './endpoint-categories.service';
+import {EndpointCategoriesService} from './endpoint-categories.service';
 
 describe('EndpointCategoriesService', () => {
   let service: EndpointCategoriesService;

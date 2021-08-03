@@ -11,9 +11,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class TextInputDialogComponent implements OnInit {
 
   inputForm: FormGroup;
-  
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {icon: string, name: string},
+    @Inject(MAT_DIALOG_DATA) public data: { icon: string, name: string },
     public dialogRef: MatDialogRef<TextInputDialogComponent>,
     private fb: FormBuilder) {
       this.inputForm = fb.group({

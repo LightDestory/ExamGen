@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,20 +20,19 @@ export class AuthStoreService {
   private set API_KEY(token: string | null) {
     if (token !== null) {
       localStorage.setItem(this.API_KEY_ID, token);
-    }
-    else
+    } else
       localStorage.removeItem(this.API_KEY_ID);
   }
 
   private set endpoint(url: string | null) {
     if (url !== null) {
       localStorage.setItem(this.ENDPOINT_ID, url);
-    }
-    else
+    } else
       localStorage.removeItem(this.ENDPOINT_ID);
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   performLogin(userData: string[]): void {
     this.API_KEY = userData[0];

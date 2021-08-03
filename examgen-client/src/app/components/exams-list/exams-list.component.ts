@@ -14,7 +14,7 @@ import {ExamOverview} from "../../models/examOverview";
 @Component({
   selector: 'app-exams-list',
   templateUrl: './exams-list.component.html',
-  styleUrls: ['./exams-list.component.scss']
+  styleUrls: []
 })
 export class ExamsListComponent implements OnInit, AfterViewInit {
 
@@ -72,19 +72,20 @@ export class ExamsListComponent implements OnInit, AfterViewInit {
     this.loadingSpinnerRef = this.helper.openLoadingDialog();
     this.examendpoint.getExamFile(id).subscribe(
       data => {
-        let file = new Blob([data], { type: 'application/pdf' })
+        let file = new Blob([data], {type: 'application/pdf'})
         let downloadLink = document.createElement('a');
         downloadLink.href = URL.createObjectURL(file);
         downloadLink.setAttribute('download', 'exam.pdf');
         downloadLink.click();
-       this.loadingSpinnerRef?.close();
+        this.loadingSpinnerRef?.close();
         this.matdialog.open(GenericDialogComponent, {
-            data: {
-              "icon": "check",
-              "title": "Successful Generation",
-              "desc": `The selected exam has been successful generated and your browser downloaded it!`,
-              "isYesNo": false
-            }});
+          data: {
+            "icon": "check",
+            "title": "Successful Generation",
+            "desc": `The selected exam has been successful generated and your browser downloaded it!`,
+            "isYesNo": false
+          }
+        });
       },
       error => {
         this.loadingSpinnerRef?.close();

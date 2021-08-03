@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EndpointSharedService} from "../shared/endpoint-shared.service";
 import {Observable} from "rxjs";
@@ -13,7 +13,8 @@ export class EndpointCategoriesService {
   private paramRoutePath: string = "api/subject/:subject/category/:category";
 
   constructor(private http: HttpClient,
-              private helper: EndpointSharedService) { }
+              private helper: EndpointSharedService) {
+  }
 
 
   getAllCategoriesFromSubject(subject: string): Observable<endpointResponse> {
@@ -25,6 +26,6 @@ export class EndpointCategoriesService {
   }
 
   renameCategoryFromSubject(subject: string, categoryName: string, newName: string): Observable<endpointResponse> {
-    return this.http.put<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":subject", subject).replace(":category", categoryName)), { "name": newName });
+    return this.http.put<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":subject", subject).replace(":category", categoryName)), {"name": newName});
   }
 }

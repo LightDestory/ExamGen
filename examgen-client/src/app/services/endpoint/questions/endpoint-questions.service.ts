@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EndpointSharedService} from "../shared/endpoint-shared.service";
 import {Observable} from "rxjs";
@@ -15,7 +15,8 @@ export class EndpointQuestionsService {
   private deleteAllRoutePath: string = "api/question/all";
 
   constructor(private http: HttpClient,
-              private helper: EndpointSharedService) { }
+              private helper: EndpointSharedService) {
+  }
 
 
   getAllQuestions(): Observable<endpointResponse> {

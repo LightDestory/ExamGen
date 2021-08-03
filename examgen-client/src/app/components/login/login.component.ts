@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { EndpointAuthService } from 'src/app/services/endpoint/auth/endpoint-auth.service';
-import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
-import { AuthStoreService } from 'src/app/services/vault/auth-store.service';
-import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from '@angular/material/dialog';
+import {Title} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {EndpointAuthService} from 'src/app/services/endpoint/auth/endpoint-auth.service';
+import {EndpointSharedService} from 'src/app/services/endpoint/shared/endpoint-shared.service';
+import {AuthStoreService} from 'src/app/services/vault/auth-store.service';
+import {GenericDialogComponent} from '../dialogs/generic-dialog/generic-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -53,9 +53,10 @@ export class LoginComponent implements OnInit {
               "title": "Authorized Service Found",
               "desc": "A authroized service has been found. Do you want to log-in?",
               "isYesNo": true
-            }}).afterClosed().subscribe((result) => {
+            }
+          }).afterClosed().subscribe((result) => {
             this.loading = false;
-            if(result){
+            if (result) {
               this.authStore.performLogin(userData);
             }
           });

@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { EndpointSubjectsService } from './endpoint-subjects.service';
+import {EndpointSubjectsService} from './endpoint-subjects.service';
 
 describe('EndpointSubjectsService', () => {
   let service: EndpointSubjectsService;

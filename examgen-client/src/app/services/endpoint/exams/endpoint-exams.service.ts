@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EndpointSharedService} from "../shared/endpoint-shared.service";
 import {Observable} from "rxjs";
@@ -17,7 +17,8 @@ export class EndpointExamsService {
   private deleteAllRoutePath: string = "api/exam/all";
 
   constructor(private http: HttpClient,
-              private helper: EndpointSharedService) { }
+              private helper: EndpointSharedService) {
+  }
 
 
   getAllPastExams(): Observable<endpointResponse> {
@@ -25,7 +26,10 @@ export class EndpointExamsService {
   }
 
   getExamFile(id: string): Observable<Blob> {
-    return this.http.get<Blob>(this.helper.getAPIRoute(this.downloadRoutePath.replace(":exam", id)), { headers: { 'Accept': 'application/pdf'}, responseType : 'blob' as 'json'});
+    return this.http.get<Blob>(this.helper.getAPIRoute(this.downloadRoutePath.replace(":exam", id)), {
+      headers: {'Accept': 'application/pdf'},
+      responseType: 'blob' as 'json'
+    });
   }
 
   deletePastExam(id: string): Observable<endpointResponse> {

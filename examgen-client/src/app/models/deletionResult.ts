@@ -1,3 +1,3 @@
 export interface deletionResult {
-    deletions: number|string
+  deletions: number | string
 }

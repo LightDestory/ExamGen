@@ -81,79 +81,78 @@ export class CategoriesListComponent implements OnInit, AfterViewInit {
   }
 
   renameCategory(categoryName: string): void {
-      this.matdialog.open(TextInputDialogComponent, {
-        data: {
-          "icon": "warning",
-          "name": categoryName
-        }
-      }).afterClosed().subscribe(result => {
-        if (result) {
-          this.loadingSpinnerRef = this.helper.openLoadingDialog();
-          this.categoryendpoint.renameCategoryFromSubject(this.subjectSelector.value, categoryName, result).subscribe(
-            data => {
-              this.loadingSpinnerRef?.close();
-              this.matdialog.open(GenericDialogComponent, {
-                data: {
-                  "icon": "check",
-                  "title": "Category renamed",
-                  "desc": `${(<updateResult>data.result).updates} questions has been updated!`,
-                  "isYesNo": false
-                }
-              }).afterClosed().subscribe(() => {
-                this.dataSource.data.forEach(sub =>{
-                  if( sub._id == categoryName){
-                    sub._id = result;
-                  }
-                });
-              });
-            },
-            error => {
-              this.loadingSpinnerRef?.close();
-              this.helper.showServiceErrorDialog(error.status);
-            }
-          )
-        }
-      })
-    }
-
-    deleteCategory(categoryName: string): void {
-      this.matdialog.open(GenericDialogComponent, {
-        data: {
-          "icon": "warning",
-          "title": "Deleting category",
-          "desc": `Do you really want to delete '${categoryName}'?`,
-          "isYesNo": true
-        }
-      }).afterClosed().subscribe((result) => {
-        if (result) {
-          this.loadingSpinnerRef = this.helper.openLoadingDialog();
-          this.categoryendpoint.deleteCategoryFromSubject(this.subjectSelector.value, categoryName).subscribe(
-            data => {
-              this.loadingSpinnerRef?.close();
-              this.matdialog.open(GenericDialogComponent, {
-                data: {
-                  "icon": "check",
-                  "title": "Category deleted",
-                  "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
-                  "isYesNo": false
-                }
-              }).afterClosed().subscribe(() => {
-                let tmp = this.dataSource.data.filter(cat => cat._id !== categoryName);
-                if(tmp.length > 0) {
-                  this.dataSource.data = tmp;
-                  this.dataSource._updateChangeSubscription();
-                }
-                else {
-                  this.dataSource.data = [];
-                  this.loadSubjects();
+    this.matdialog.open(TextInputDialogComponent, {
+      data: {
+        "icon": "warning",
+        "name": categoryName
+      }
+    }).afterClosed().subscribe(result => {
+      if (result) {
+        this.loadingSpinnerRef = this.helper.openLoadingDialog();
+        this.categoryendpoint.renameCategoryFromSubject(this.subjectSelector.value, categoryName, result).subscribe(
+          data => {
+            this.loadingSpinnerRef?.close();
+            this.matdialog.open(GenericDialogComponent, {
+              data: {
+                "icon": "check",
+                "title": "Category renamed",
+                "desc": `${(<updateResult>data.result).updates} questions has been updated!`,
+                "isYesNo": false
+              }
+            }).afterClosed().subscribe(() => {
+              this.dataSource.data.forEach(sub => {
+                if (sub._id == categoryName) {
+                  sub._id = result;
                 }
               });
-            },
-            error => {
-              this.loadingSpinnerRef?.close();
-              this.helper.showServiceErrorDialog(error.status);
             });
-        }
-      });
-    }
+          },
+          error => {
+            this.loadingSpinnerRef?.close();
+            this.helper.showServiceErrorDialog(error.status);
+          }
+        )
+      }
+    })
+  }
+
+  deleteCategory(categoryName: string): void {
+    this.matdialog.open(GenericDialogComponent, {
+      data: {
+        "icon": "warning",
+        "title": "Deleting category",
+        "desc": `Do you really want to delete '${categoryName}'?`,
+        "isYesNo": true
+      }
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.loadingSpinnerRef = this.helper.openLoadingDialog();
+        this.categoryendpoint.deleteCategoryFromSubject(this.subjectSelector.value, categoryName).subscribe(
+          data => {
+            this.loadingSpinnerRef?.close();
+            this.matdialog.open(GenericDialogComponent, {
+              data: {
+                "icon": "check",
+                "title": "Category deleted",
+                "desc": `${(<deletionResult>data.result).deletions} questions has been deleted!`,
+                "isYesNo": false
+              }
+            }).afterClosed().subscribe(() => {
+              let tmp = this.dataSource.data.filter(cat => cat._id !== categoryName);
+              if (tmp.length > 0) {
+                this.dataSource.data = tmp;
+                this.dataSource._updateChangeSubscription();
+              } else {
+                this.dataSource.data = [];
+                this.loadSubjects();
+              }
+            });
+          },
+          error => {
+            this.loadingSpinnerRef?.close();
+            this.helper.showServiceErrorDialog(error.status);
+          });
+      }
+    });
+  }
 }

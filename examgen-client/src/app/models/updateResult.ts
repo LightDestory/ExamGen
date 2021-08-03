@@ -1,3 +1,3 @@
 export interface updateResult {
-    updates: string|number;
+  updates: string | number;
 }

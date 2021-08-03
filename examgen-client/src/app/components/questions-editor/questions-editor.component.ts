@@ -10,7 +10,6 @@ import {Answer, Question} from "../../models/question";
 import {Observable} from "rxjs";
 import {endpointResponse} from "../../models/endpointResponse";
 import {GenericDialogComponent} from "../dialogs/generic-dialog/generic-dialog.component";
-import {deletionResult} from "../../models/deletionResult";
 
 @Component({
   selector: 'app-questions-editor',

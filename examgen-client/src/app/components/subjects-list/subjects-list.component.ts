@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Title } from '@angular/platform-browser';
-import { SubjectNCategory } from 'src/app/models/sub_cat_model';
-import { EndpointSharedService } from 'src/app/services/endpoint/shared/endpoint-shared.service';
-import { EndpointSubjectsService } from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { GenericDialogComponent } from '../dialogs/generic-dialog/generic-dialog.component';
-import { deletionResult } from 'src/app/models/deletionResult';
-import { LoadingDialogComponent } from '../dialogs/loading-dialog/loading-dialog.component';
-import { TextInputDialogComponent } from '../dialogs/text-input-dialog/text-input-dialog.component';
-import { updateResult } from 'src/app/models/updateResult';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {Title} from '@angular/platform-browser';
+import {SubjectNCategory} from 'src/app/models/sub_cat_model';
+import {EndpointSharedService} from 'src/app/services/endpoint/shared/endpoint-shared.service';
+import {EndpointSubjectsService} from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+import {GenericDialogComponent} from '../dialogs/generic-dialog/generic-dialog.component';
+import {deletionResult} from 'src/app/models/deletionResult';
+import {LoadingDialogComponent} from '../dialogs/loading-dialog/loading-dialog.component';
+import {TextInputDialogComponent} from '../dialogs/text-input-dialog/text-input-dialog.component';
+import {updateResult} from 'src/app/models/updateResult';
 
 @Component({
   selector: 'app-subjects-list',
@@ -32,7 +32,8 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
     private pageTitle: Title,
     private endpoint: EndpointSubjectsService,
     private matdialog: MatDialog,
-    private helper: EndpointSharedService) { }
+    private helper: EndpointSharedService) {
+  }
 
   ngOnInit(): void {
     this.pageTitle.setTitle("ExamGen - Subjects Listing");
@@ -79,8 +80,8 @@ export class SubjectsListComponent implements OnInit, AfterViewInit {
                 "isYesNo": false
               }
             }).afterClosed().subscribe(() => {
-              this.dataSource.data.forEach(sub =>{
-                if( sub._id == subjectName){
+              this.dataSource.data.forEach(sub => {
+                if (sub._id == subjectName) {
                   sub._id = result;
                 }
               });

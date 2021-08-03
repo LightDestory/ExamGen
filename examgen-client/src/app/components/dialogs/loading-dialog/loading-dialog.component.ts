@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-loading-dialog',
   templateUrl: './loading-dialog.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class LoadingDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

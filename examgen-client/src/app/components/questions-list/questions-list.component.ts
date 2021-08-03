@@ -10,7 +10,6 @@ import {LoadingDialogComponent} from '../dialogs/loading-dialog/loading-dialog.c
 import {MatSelect} from "@angular/material/select";
 import {EndpointQuestionsService} from "../../services/endpoint/questions/endpoint-questions.service";
 import {Question} from "../../models/question";
-import {endpointResponse} from "../../models/endpointResponse";
 import {QuestionViewDialogComponent} from "../dialogs/question-view-dialog/question-view-dialog.component";
 
 @Component({
@@ -86,20 +85,20 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   viewQuestion(id: string): void {
     this.loadingSpinnerRef = this.helper.openLoadingDialog();
     this.questionendpoint.getQuestionDetails(id).subscribe(
-        data => {
-          this.loadingSpinnerRef!.close();
-          this.matdialog.open(QuestionViewDialogComponent, {
-            data: {
-              icon: "check",
-              payload: <Question>data.result
-            }
-          });
-        },
+      data => {
+        this.loadingSpinnerRef!.close();
+        this.matdialog.open(QuestionViewDialogComponent, {
+          data: {
+            icon: "check",
+            payload: <Question>data.result
+          }
+        });
+      },
       error => {
-          this.loadingSpinnerRef!.close();
-          this.helper.showServiceErrorDialog(error.status);
-        }
-      );
+        this.loadingSpinnerRef!.close();
+        this.helper.showServiceErrorDialog(error.status);
+      }
+    );
   }
 
   deleteQuestion(title: string, id: string): void {

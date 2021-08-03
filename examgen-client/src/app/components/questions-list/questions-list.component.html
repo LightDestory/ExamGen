@@ -1,5 +1,4 @@
 <h1 class="text-center">Questions Listing</h1>
-
 <div class="container" fxLayout="row wrap" fxLayoutAlign="center center">
   <mat-form-field appearance="outline">
     <mat-icon matSuffix>stars</mat-icon>
@@ -13,7 +12,8 @@
   <mat-form-field appearance="outline">
     <mat-icon matSuffix>category</mat-icon>
     <mat-label>Select a Category:</mat-label>
-    <mat-select #categorySelector [disabled]="subjectSelector.value == undefined" (selectionChange)="onCategoryChange()">
+    <mat-select #categorySelector [disabled]="subjectSelector.value == undefined"
+                (selectionChange)="onCategoryChange()">
       <mat-option value="All">All</mat-option>
       <mat-option *ngFor="let cat of subject_categories" [value]="cat">
         {{cat}}
@@ -21,23 +21,18 @@
     </mat-select>
   </mat-form-field>
 </div>
-
-
 <div class="mat-elevation-z8 container-table">
   <table mat-table [dataSource]="dataSource" matSort>
-
     <!-- Subject's Name Column -->
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
       <td mat-cell *matCellDef="let element"> {{element.title}} </td>
     </ng-container>
-
     <!-- AnswerType Column -->
     <ng-container matColumnDef="answerType">
-      <th mat-header-cell *matHeaderCellDef > Answer Type</th>
+      <th mat-header-cell *matHeaderCellDef> Answer Type</th>
       <td mat-cell *matCellDef="let element"> {{element.answerTypology}} </td>
     </ng-container>
-
     <!-- View Column -->
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef class="text-center">
@@ -49,7 +44,6 @@
         </button>
       </td>
     </ng-container>
-
     <!-- Edit Column -->
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef class="text-center">
@@ -61,7 +55,6 @@
         </button>
       </td>
     </ng-container>
-
     <!-- Delete Column -->
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef class="text-center">
@@ -69,15 +62,13 @@
       </th>
       <td mat-cell *matCellDef="let element" class="text-center">
         <button mat-raised-button color="warn"
-               (click)="deleteQuestion(element.title, element._id)">Delete
+                (click)="deleteQuestion(element.title, element._id)">Delete
         </button>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
   <mat-paginator
     [length]="dataSource?.data?.length"
     [pageIndex]="0"

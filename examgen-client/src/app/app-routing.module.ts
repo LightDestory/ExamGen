@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
-import { DashboardWelcomeComponent } from './components/dashboard-welcome/dashboard-welcome.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LoginComponent } from './components/login/login.component';
-import { SubjectsListComponent } from './components/subjects-list/subjects-list.component';
-import { AuthGuard } from './guards/auth/auth.guard';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AboutComponent} from './components/about/about.component';
+import {DashboardWelcomeComponent} from './components/dashboard-welcome/dashboard-welcome.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {LoginComponent} from './components/login/login.component';
+import {SubjectsListComponent} from './components/subjects-list/subjects-list.component';
+import {AuthGuard} from './guards/auth/auth.guard';
 import {CategoriesListComponent} from "./components/categories-list/categories-list.component";
 import {QuestionsListComponent} from "./components/questions-list/questions-list.component";
 import {QuestionsEditorComponent} from "./components/questions-editor/questions-editor.component";
@@ -30,8 +30,8 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path:'',
-        component:DashboardWelcomeComponent
+        path: '',
+        component: DashboardWelcomeComponent
       },
       {
         path: 'subjects',
@@ -82,4 +82,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
