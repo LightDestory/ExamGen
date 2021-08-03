@@ -1148,7 +1148,45 @@ URL: localhost:5000/api/subject/:SubjectName
 
 
 
-##### II. Example Request: Failed Rename (404)
+##### II. Example Request: Failed Rename (400)
+
+
+
+***Query:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| SubjectName | Web Programming | The name of the subject that you want to change |
+| QuestionID | 60fee5b01db0d90980dad087 |  |
+
+
+
+***Body:***
+
+```js        
+{
+    "aaaa": "Mobile Programming"
+}
+```
+
+
+
+##### II. Example Response: Failed Rename (400)
+```js
+{
+    "status": "error",
+    "result": "Invalid request's parameters!"
+}
+```
+
+
+***Status Code:*** 400
+
+<br>
+
+
+
+##### III. Example Request: Failed Rename (404)
 
 
 
@@ -1170,7 +1208,7 @@ URL: localhost:5000/api/subject/:SubjectName
 
 
 
-##### II. Example Response: Failed Rename (404)
+##### III. Example Response: Failed Rename (404)
 ```js
 {
     "status": "error",
@@ -1185,7 +1223,7 @@ URL: localhost:5000/api/subject/:SubjectName
 
 
 
-##### III. Example Request: Failed Rename (409)
+##### IV. Example Request: Failed Rename (409)
 
 
 
@@ -1207,7 +1245,7 @@ URL: localhost:5000/api/subject/:SubjectName
 
 
 
-##### III. Example Response: Failed Rename (409)
+##### IV. Example Response: Failed Rename (409)
 ```js
 {
     "status": "error",
@@ -1559,7 +1597,46 @@ URL: localhost:5000/api/subject/:SubjectName/category/:CategoryName
 
 
 
-##### II. Example Request: Failed Rename (404)
+##### II. Example Request: Failed Rename (400)
+
+
+
+***Query:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| SubjectName | Web Programming | The name of the subject that you want to change |
+| CategoryName | JS | The name of the category that you want to change |
+| QuestionID | 60fee5b01db0d90980dad087 |  |
+
+
+
+***Body:***
+
+```js        
+{
+    "aaaa": "PHP"
+}
+```
+
+
+
+##### II. Example Response: Failed Rename (400)
+```js
+{
+    "status": "error",
+    "result": "Invalid request's parameters!"
+}
+```
+
+
+***Status Code:*** 400
+
+<br>
+
+
+
+##### III. Example Request: Failed Rename (404)
 
 
 
@@ -1582,7 +1659,7 @@ URL: localhost:5000/api/subject/:SubjectName/category/:CategoryName
 
 
 
-##### II. Example Response: Failed Rename (404)
+##### III. Example Response: Failed Rename (404)
 ```js
 {
     "status": "error",
@@ -1597,7 +1674,7 @@ URL: localhost:5000/api/subject/:SubjectName/category/:CategoryName
 
 
 
-##### III. Example Request: Failed Rename (409)
+##### IV. Example Request: Failed Rename (409)
 
 
 
@@ -1620,7 +1697,7 @@ URL: localhost:5000/api/subject/:SubjectName/category/:CategoryName
 
 
 
-##### III. Example Response: Failed Rename (409)
+##### IV. Example Response: Failed Rename (409)
 ```js
 {
     "status": "error",
@@ -2424,4 +2501,4 @@ URL: localhost:5000/api/exam/all
 
 ---
 [Back to top](#examgen)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-01 12:09:08 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-03 13:55:58 by [docgen](https://github.com/thedevsaddam/docgen)

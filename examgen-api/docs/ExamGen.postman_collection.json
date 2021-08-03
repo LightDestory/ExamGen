@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "04dca22b-1753-43d6-9f14-a90bd20112a4",
+		"_postman_id": "21848317-84da-489f-b6a2-16b595484ef2",
 		"name": "ExamGen",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1399,6 +1399,51 @@
 							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"updates\": 6\n    }\n}"
 						},
 						{
+							"name": "Failed Rename (400)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"aaaa\": \"Mobile Programming\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"value": "60fee5b01db0d90980dad087",
+											"key": "QuestionID"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
 							"name": "Failed Rename (404)",
 							"originalRequest": {
 								"method": "PUT",
@@ -2139,6 +2184,58 @@
 							"body": "{\n    \"status\": \"success\",\n    \"result\": {\n        \"updates\": 12\n    }\n}"
 						},
 						{
+							"name": "Failed Rename (400)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"aaaa\": \"PHP\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/api/subject/:SubjectName/category/:CategoryName",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"subject",
+										":SubjectName",
+										"category",
+										":CategoryName"
+									],
+									"variable": [
+										{
+											"key": "SubjectName",
+											"value": "Web Programming",
+											"description": "The name of the subject that you want to change"
+										},
+										{
+											"key": "CategoryName",
+											"value": "JS",
+											"description": "The name of the category that you want to change"
+										},
+										{
+											"value": "60fee5b01db0d90980dad087",
+											"key": "QuestionID"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"status\": \"error\",\n    \"result\": \"Invalid request's parameters!\"\n}"
+						},
+						{
 							"name": "Failed Rename (404)",
 							"originalRequest": {
 								"method": "PUT",
@@ -2295,7 +2392,7 @@
 					]
 				},
 				{
-					"name": "Delete Subject",
+					"name": "Delete Category",
 					"request": {
 						"method": "DELETE",
 						"header": [],
