@@ -69,7 +69,8 @@ examRoute.post('/generate', async (req: Request, res: Response) => {
         return
     }
     let e: ExamRequest = {subject, title, questions}
-    let subjects: String[] = await getAllSubjects()
+    let subjects: any[] = await getAllSubjects();
+    subjects = subjects.map((sub: any) => sub._id);
     if(subjects.indexOf(e.subject) == -1) {
         Sender.getInstance().sendError(res, Sender.ERROR_TYPE_NOT_FOUND);
         return
