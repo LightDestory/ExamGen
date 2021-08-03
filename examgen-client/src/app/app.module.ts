@@ -24,6 +24,7 @@ import { QuestionViewDialogComponent } from './components/dialogs/question-view-
 import { QuestionsEditorComponent } from './components/questions-editor/questions-editor.component';
 import { ExamsListComponent } from './components/exams-list/exams-list.component';
 import { ExamGeneratorComponent } from './components/exam-generator/exam-generator.component';
+import { EasterEggComponent } from './components/extra/easter-egg/easter-egg.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ExamGeneratorComponent } from './components/exam-generator/exam-generat
     QuestionViewDialogComponent,
     QuestionsEditorComponent,
     ExamsListComponent,
-    ExamGeneratorComponent
+    ExamGeneratorComponent,
+    EasterEggComponent
   ],
   entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent, QuestionViewDialogComponent],
   imports: [

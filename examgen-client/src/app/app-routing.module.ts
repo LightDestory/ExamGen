@@ -11,6 +11,7 @@ import {QuestionsListComponent} from "./components/questions-list/questions-list
 import {QuestionsEditorComponent} from "./components/questions-editor/questions-editor.component";
 import {ExamsListComponent} from "./components/exams-list/exams-list.component";
 import {ExamGeneratorComponent} from "./components/exam-generator/exam-generator.component";
+import {EasterEggComponent} from "./components/extra/easter-egg/easter-egg.component";
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
       {
         path: 'about',
         component: AboutComponent
+      },
+      {
+        path: 'capybara',
+        component: EasterEggComponent
       }
     ]
   },
