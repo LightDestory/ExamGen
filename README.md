@@ -9,7 +9,7 @@ Select a specific sub-repo to vitis :)
 | Repo                           | Link                                                                       |
 | ------------------------------ | -------------------------------------------------------------------------- |
 | :eyeglasses: Application       | [Link](https://github.com/LightDestory/ExamGen/tree/master/examgen-client) |
-| :globe_with_meridians:: Server | [Link](https://github.com/LightDestory/ExamGen/tree/master/examgen-api)    |
+| :globe_with_meridians:  Server | [Link](https://github.com/LightDestory/ExamGen/tree/master/examgen-api)    |
 
 ## :large_orange_diamond: License :copyright:
 

@@ -1,27 +1,27 @@
-# ExamgenClient
+# :cloud: Exam-Gen (front-end) 
+<img src="./.github/images/login.PNG" width="50%"><img src="./.github/images/dashboard.PNG" width="50%">
+<img src="./.github/images/sub_list.PNG" width="50%"><img src="./.github/images/exam_gen.PNG" width="50%">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
 
-## Development server
+This project is a Single Page Application for my ExamGen service.
+
+## :heart: Powered By
+
+The SPA is based on:
+
+- **Angular 12**, it is an application design framework and development platform for creating efficient and sophisticated single-page apps;
+- **Angular Material**, a set of UI component infrastructure and Material Design components for mobile and desktop Angular web applications;
+- **Angular Flex Layout**, it provides a sophisticated layout API using Flexbox CSS + mediaQuery;
+
+## :bulb: Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
+## :wrench: Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## :gear: Setup
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+After the Build process you can use any web server you want to create a virtual host that points to the `dist/examgen-client/` directory
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
