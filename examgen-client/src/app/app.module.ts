@@ -20,6 +20,8 @@ import { LoadingDialogComponent } from './components/dialogs/loading-dialog/load
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
+import { QuestionViewDialogComponent } from './components/dialogs/question-view-dialog/question-view-dialog.component';
+import { QuestionsEditorComponent } from './components/questions-editor/questions-editor.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +36,11 @@ import { QuestionsListComponent } from './components/questions-list/questions-li
     TextInputDialogComponent,
     LoadingDialogComponent,
     CategoriesListComponent,
-    QuestionsListComponent
+    QuestionsListComponent,
+    QuestionViewDialogComponent,
+    QuestionsEditorComponent
   ],
-  entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent],
+  entryComponents: [GenericDialogComponent, LoadingDialogComponent, TextInputDialogComponent, QuestionViewDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,7 +57,7 @@ import { QuestionsListComponent } from './components/questions-list/questions-li
     useClass: HttpInterceptorService,
     multi:true
     },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {disableClose: true, hasBackdrop: true}}
   ],
   bootstrap: [AppComponent]
 })

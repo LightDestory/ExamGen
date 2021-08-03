@@ -1,21 +1,17 @@
-import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Title} from '@angular/platform-browser';
-import {SubjectNCategory} from 'src/app/models/sub_cat_model';
 import {EndpointSharedService} from 'src/app/services/endpoint/shared/endpoint-shared.service';
-import {EndpointSubjectsService} from 'src/app/services/endpoint/subjects/endpoint-subjects.service';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {GenericDialogComponent} from '../dialogs/generic-dialog/generic-dialog.component';
-import {deletionResult} from 'src/app/models/deletionResult';
 import {LoadingDialogComponent} from '../dialogs/loading-dialog/loading-dialog.component';
-import {TextInputDialogComponent} from '../dialogs/text-input-dialog/text-input-dialog.component';
-import {updateResult} from 'src/app/models/updateResult';
-import {EndpointCategoriesService} from "../../services/endpoint/categories/endpoint-categories.service";
 import {MatSelect} from "@angular/material/select";
 import {EndpointQuestionsService} from "../../services/endpoint/questions/endpoint-questions.service";
 import {Question} from "../../models/question";
+import {endpointResponse} from "../../models/endpointResponse";
+import {QuestionViewDialogComponent} from "../dialogs/question-view-dialog/question-view-dialog.component";
 
 @Component({
   selector: 'app-questions-list',
@@ -84,10 +80,33 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
     }
     this.dataSource.data = questions;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  async getQuestionDetails(id: string): Promise<endpointResponse> {
+    return await this.questionendpoint.getQuestionDetails(id).toPromise();
   }
 
   viewQuestion(id: string): void {
-    alert(id);
+    this.loadingSpinnerRef = this.helper.openLoadingDialog();
+    this.getQuestionDetails(id)
+      .then(
+        data => {
+          this.loadingSpinnerRef!.close();
+          this.matdialog.open(QuestionViewDialogComponent, {
+            data: {
+              icon: "check",
+              payload: <Question>data.result
+            }
+          });
+        }
+      )
+      .catch(
+        error => {
+          this.loadingSpinnerRef!.close();
+          this.helper.showServiceErrorDialog(error.status);
+        }
+      )
   }
 
   /*renameCategory(categoryName: string): void {
@@ -151,11 +170,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
               let deleted: Question = <Question>data.result;
               this.genericData = this.genericData.filter(question => question._id !== deleted._id);
               if (this.genericData.length == 0) {
-                this.subjects = [];
-                this.subject_categories = [];
-                this.dataSource.data = [];
-                this.categorySelector.value = undefined;
-                this.subjectSelector.value = undefined;
+                this.resetView();
               } else {
                 let sub_check = this.genericData.filter(question => question.subject! === deleted.subject!);
                 if (sub_check.length === 0) {
@@ -182,4 +197,13 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  private resetView(): void {
+    this.subjects = [];
+    this.subject_categories = [];
+    this.dataSource.data = [];
+    this.categorySelector.value = undefined;
+    this.subjectSelector.value = undefined;
+  }
+
 }

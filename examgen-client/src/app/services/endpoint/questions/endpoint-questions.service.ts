@@ -21,6 +21,10 @@ export class EndpointQuestionsService {
     return this.http.get<endpointResponse>(this.helper.getAPIRoute(this.getAllRoutePath));
   }
 
+  getQuestionDetails(question: string): Observable<endpointResponse> {
+    return this.http.get<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":question", question)));
+  }
+
   deleteQuestion(question: string): Observable<endpointResponse> {
     return this.http.delete<endpointResponse>(this.helper.getAPIRoute(this.paramRoutePath.replace(":question", question)));
   }

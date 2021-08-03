@@ -1,0 +1,37 @@
+<h1 mat-dialog-title class="text-center"><mat-icon>{{data.icon}}</mat-icon> Question Viewing</h1>
+<div mat-dialog-content>
+  <table class="mat-elevation-z6">
+    <tr>
+      <th>Title</th>
+      <td class="text-center">{{data.payload.title}}</td>
+    </tr>
+    <tr>
+      <th>Subject</th>
+      <td class="text-center">{{data.payload.subject}}</td>
+    </tr>
+    <tr>
+      <th>Category</th>
+      <td class="text-center">{{data.payload.category}}</td>
+    </tr>
+    <tr>
+      <th>Optional Text</th>
+      <td class="text-center">{{data.payload.optionalSubContent || "None"}}</td>
+    </tr>
+    <tr>
+      <th>Answer Typology</th>
+      <td class="text-center">{{data.payload.answerTypology}}</td>
+    </tr>
+    <tr *ngIf="data.payload.answerTypology=='multi'">
+      <th>Answers</th>
+      <td>
+        <ul>
+          <li *ngFor="let ans of data.payload.answers!">{{ans.text}}</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" mat-dialog-close>Ok</button>
+</div>
+
