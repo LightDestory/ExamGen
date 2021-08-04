@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, ValidatorFn, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
@@ -10,18 +10,22 @@ import {Answer, Question} from "../../models/question";
 import {Observable} from "rxjs";
 import {endpointResponse} from "../../models/endpointResponse";
 import {GenericDialogComponent} from "../dialogs/generic-dialog/generic-dialog.component";
+import {SubjectDescriptor} from "../../models/SubjectDescriptor";
 
 @Component({
   selector: 'app-questions-editor',
   templateUrl: './questions-editor.component.html',
   styleUrls: ['./questions-editor.component.scss']
 })
-export class QuestionsEditorComponent implements OnInit {
+export class QuestionsEditorComponent implements OnInit, AfterViewInit {
 
   questionID: string | null;
   questionForm: FormGroup;
   private loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
   @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
+  public descriptors: SubjectDescriptor[] = [];
+  subjectFilterControl = new FormControl();
+  categoryFilterControl = new FormControl();
 
   constructor(
     private router: Router,
@@ -51,6 +55,38 @@ export class QuestionsEditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageTitle.setTitle('ExamGen - Editor');
+  }
+
+  ngAfterViewInit() {
+    this.loadDescriptors();
+  }
+
+  private loadDescriptors(): void {
+    this.loadingSpinnerRef = this.helper.openLoadingDialog();
+    this.questionendpoint.getAllQuestions().subscribe(
+      data => {
+        this.loadingSpinnerRef!.close();
+        let genericData = (<Question[]>data.result);
+        let subjects: string[] = genericData.map(question => question.subject!)
+          .filter((value, index, self) => self!.indexOf(value!) === index);
+        subjects.forEach((sub) => {
+          let tmp: SubjectDescriptor = {subject: sub, categories: []}
+          tmp.categories = genericData.filter(question => question.subject == sub)
+            .map(question => question.category!)
+            .filter((value, index, self) => self!.indexOf((value!)) === index);
+          this.descriptors.push(tmp);
+        });
+      },
+      error => {
+        this.loadingSpinnerRef!.close();
+        this.helper.showServiceErrorDialog(error.status);
+      }
+    )
+    console.log(this.descriptors);
+  }
+
+  getDescriptorBySubject(sub: string): SubjectDescriptor{
+    return (this.descriptors.filter(desc => desc.subject == sub))[0];
   }
 
   private generateQuestion(): Question {

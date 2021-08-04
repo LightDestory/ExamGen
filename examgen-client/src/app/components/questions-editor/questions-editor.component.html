@@ -4,7 +4,12 @@
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>stars</mat-icon>
       <mat-label>Enter the question's Subject</mat-label>
-      <input matInput formControlName="subject" type="text">
+      <input matInput #subjectSelector formControlName="subject" type="text" [matAutocomplete]="subjectsAutoComplete">
+      <mat-autocomplete #subjectsAutoComplete="matAutocomplete">
+        <mat-option *ngFor="let desc of descriptors" [value]="desc.subject">
+          {{desc.subject}}
+        </mat-option>
+      </mat-autocomplete>
       <mat-error *ngIf="questionForm.controls['subject'].hasError('required')">
         A subject is <strong>required</strong> to proceed!
       </mat-error>
@@ -12,7 +17,14 @@
     <mat-form-field class="full-width" appearance="outline">
       <mat-icon matSuffix>category</mat-icon>
       <mat-label>Enter the question's Category</mat-label>
-      <input matInput formControlName="category" type="text">
+      <input matInput formControlName="category" type="text" [matAutocomplete]="categoryAutoComplete">
+      <mat-autocomplete #categoryAutoComplete="matAutocomplete">
+        <ng-container *ngIf="getDescriptorBySubject(subjectSelector.value) !== undefined">
+        <mat-option *ngFor="let cat of getDescriptorBySubject(subjectSelector.value).categories" [value]="cat">
+          {{cat}}
+        </mat-option>
+        </ng-container>
+      </mat-autocomplete>
       <mat-error *ngIf="questionForm.controls['category'].hasError('required')">
         A category is <strong>required</strong> to proceed!
       </mat-error>
