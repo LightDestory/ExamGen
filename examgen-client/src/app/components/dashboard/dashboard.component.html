@@ -74,7 +74,7 @@
           </button>
         </ng-template>
       </mat-expansion-panel>
-      <mat-expansion-panel [expanded]="isExpanded('exams')">
+      <mat-expansion-panel [expanded]="isExpanded('exams') || isExpanded('generate')">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <mat-icon>assignment</mat-icon>
@@ -86,7 +86,7 @@
             <mat-icon>list</mat-icon>
             <span>Past Exams List</span>
           </button>
-          <button class="submenu-button" mat-button [routerLink]="['generate']">
+          <button class="submenu-button" mat-button [routerLinkActive]="['active-link']" [routerLink]="['generate']">
             <mat-icon>add</mat-icon>
             <span>Generate Exam</span>
           </button>
