@@ -11,6 +11,7 @@ import {MatSelect} from "@angular/material/select";
 import {EndpointQuestionsService} from "../../services/endpoint/questions/endpoint-questions.service";
 import {Question} from "../../models/question";
 import {QuestionViewDialogComponent} from "../dialogs/question-view-dialog/question-view-dialog.component";
+import {SubjectDescriptor} from "../../models/SubjectDescriptor";
 
 @Component({
   selector: 'app-questions-list',
@@ -26,8 +27,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
 
   private loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
   public genericData: Question[] = [];
-  public subjects: string[] = [];
-  public subject_categories: string[] = []
+  public descriptors: SubjectDescriptor[] = [];
   displayedColumns: string[] = ['title', 'answerType', 'view', 'edit', 'delete'];
   dataSource: MatTableDataSource<Question> = new MatTableDataSource<Question>();
 
@@ -53,8 +53,15 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
       data => {
         this.loadingSpinnerRef!.close();
         this.genericData = (<Question[]>data.result);
-        this.subjects = this.genericData.map(question => question.subject!)
+        let subjects: string[] = this.genericData.map(question => question.subject!)
           .filter((value, index, self) => self!.indexOf(value!) === index);
+        subjects.forEach((sub) => {
+          let tmp: SubjectDescriptor = {subject: sub, categories: []}
+          tmp.categories = this.genericData.filter(question => question.subject == sub)
+            .map(question => question.category!)
+            .filter((value, index, self) => self!.indexOf((value!)) === index);
+          this.descriptors.push(tmp);
+        });
       },
       error => {
         this.loadingSpinnerRef!.close();
@@ -64,9 +71,6 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   }
 
   onSubjectChange(): void {
-    this.subject_categories = this.genericData.filter(question => question.subject == this.subjectSelector.value)
-      .map(question => question.category!)
-      .filter((value, index, self) => self!.indexOf((value!)) === index);
     this.categorySelector.value = "All";
     this.onCategoryChange();
   }
@@ -101,6 +105,10 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
     );
   }
 
+  getDescriptorBySubject(sub: string): SubjectDescriptor{
+    return (this.descriptors.filter(desc => desc.subject == sub))[0];
+  }
+
   deleteQuestion(title: string, id: string): void {
     this.matdialog.open(GenericDialogComponent, {
       data: {
@@ -130,13 +138,14 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
               } else {
                 let sub_check = this.genericData.filter(question => question.subject! === deleted.subject!);
                 if (sub_check.length === 0) {
-                  this.subjects = this.subjects.filter(sub => sub != deleted.subject!);
-                  this.subjectSelector.value = this.subjects[0];
+                  this.descriptors = this.descriptors.filter(desc => desc.subject != deleted.subject!);
+                  this.subjectSelector.value = this.descriptors[0].subject;
                   this.onSubjectChange();
                 } else {
                   let cat_check = sub_check.filter(question => question.category! === deleted.category!);
                   if (cat_check.length === 0) {
-                    this.subject_categories = this.subject_categories.filter(cat => cat != deleted.category!);
+                    let selector = this.getDescriptorBySubject(deleted.subject!);
+                    selector.categories = selector.categories.filter(cat => cat != deleted.category!);
                     this.categorySelector.value = "All";
                     this.onCategoryChange();
                   } else {
@@ -155,8 +164,7 @@ export class QuestionsListComponent implements OnInit, AfterViewInit {
   }
 
   private resetView(): void {
-    this.subjects = [];
-    this.subject_categories = [];
+    this.descriptors = [];
     this.dataSource.data = [];
     this.categorySelector.value = undefined;
     this.subjectSelector.value = undefined;

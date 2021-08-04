@@ -3,9 +3,9 @@
   <mat-form-field appearance="outline">
     <mat-icon matSuffix>stars</mat-icon>
     <mat-label>Select a Subject:</mat-label>
-    <mat-select #subjectSelector [disabled]="subjects.length == 0" (selectionChange)="onSubjectChange()">
-      <mat-option *ngFor="let sub of subjects" [value]="sub">
-        {{sub}}
+    <mat-select #subjectSelector [disabled]="descriptors.length == 0" (selectionChange)="onSubjectChange()">
+      <mat-option *ngFor="let sub of descriptors" [value]="sub.subject">
+        {{sub.subject}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -15,9 +15,11 @@
     <mat-select #categorySelector [disabled]="subjectSelector.value == undefined"
                 (selectionChange)="onCategoryChange()">
       <mat-option value="All">All</mat-option>
-      <mat-option *ngFor="let cat of subject_categories" [value]="cat">
+      <ng-container *ngIf="subjectSelector.value !== undefined">
+      <mat-option *ngFor="let cat of getDescriptorBySubject(subjectSelector.value).categories" [value]="cat">
         {{cat}}
       </mat-option>
+      </ng-container>
     </mat-select>
   </mat-form-field>
 </div>
