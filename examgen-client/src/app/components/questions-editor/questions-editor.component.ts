@@ -62,6 +62,7 @@ export class QuestionsEditorComponent implements OnInit, AfterViewInit {
   }
 
   private loadDescriptors(): void {
+    this.descriptors = [];
     this.loadingSpinnerRef = this.helper.openLoadingDialog();
     this.questionendpoint.getAllQuestions().subscribe(
       data => {
@@ -121,6 +122,7 @@ export class QuestionsEditorComponent implements OnInit, AfterViewInit {
             "isYesNo": false
           }}).afterClosed().subscribe(() => {
             this.formDirective.resetForm();
+            this.loadDescriptors();
           });
       },
       error => {
