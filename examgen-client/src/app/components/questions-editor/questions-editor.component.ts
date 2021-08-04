@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormGroupDirective, ValidatorFn, Validators} from '@angular/forms';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Title} from '@angular/platform-browser';
 import {LoadingDialogComponent} from "../dialogs/loading-dialog/loading-dialog.component";
@@ -21,6 +21,7 @@ export class QuestionsEditorComponent implements OnInit {
   questionID: string | null;
   questionForm: FormGroup;
   private loadingSpinnerRef: MatDialogRef<LoadingDialogComponent> | null = null;
+  @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
 
   constructor(
     private router: Router,
@@ -82,7 +83,9 @@ export class QuestionsEditorComponent implements OnInit {
             "title": `Question ${this.questionID !== null ? 'updated' : 'created'}`,
             "desc": `The has been ${this.questionID !== null ? 'updated' : 'created'}!`,
             "isYesNo": false
-          }}).afterClosed().subscribe(() => this.router.navigate(['dashboard']));
+          }}).afterClosed().subscribe(() => {
+            this.formDirective.resetForm();
+          });
       },
       error => {
         this.loadingSpinnerRef!.close();
