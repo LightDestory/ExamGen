@@ -25,3 +25,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 After the Build process you can use any web server you want to create a virtual host that points to the `dist/examgen-client/` directory
 
+## :gear: Serving with the back-end
+
+If you want to serve the front-end with the same web server of the back-end, please follow the instructiones inside the back-end's README!
+
+

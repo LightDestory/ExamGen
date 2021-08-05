@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.loading = false;
     this.loginForm = fb.group({
       secretKey: new FormControl("", Validators.required),
-      endpoint: new FormControl('', Validators.required)
+      endpoint: new FormControl('http://localhost:5000', Validators.required)
     });
   }
 
