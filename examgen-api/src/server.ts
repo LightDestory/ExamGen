@@ -8,6 +8,7 @@ import {DEFAULT_SECRET_KEY, DEFAULT_PORT} from "./config/globals";
 
 const configuration = require('dotenv').config();
 const app: Application = express();
+const path = require('path');
 
 
 function bootstrap() {
@@ -24,7 +25,13 @@ function bootstrap() {
             app.use(cors({origin: '*'}));
             app.use(express.json(), express.text(), bodyParser.urlencoded({extended: false}));
             app.use(authCheck);
+            // API
             registerRoutes(app);
+            // CLIENT
+            app.use(express.static(path.join(__dirname, 'static')));
+            app.get('/*', async (req, res) => {
+                res.sendFile(path.resolve(__dirname, 'static', 'index.html'));
+            });
             app.listen(port, () => {
                 console.log(`Listening to ${port}!`);
             });
